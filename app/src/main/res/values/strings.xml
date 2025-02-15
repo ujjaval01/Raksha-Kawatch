@@ -12,5 +12,7 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="create_an_account">Create an account?</string>
     <string name="forgot_password">Forgot password?</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
 
 </resources>

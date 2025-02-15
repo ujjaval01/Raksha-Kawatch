@@ -54,9 +54,36 @@
         android:layout_marginTop="10dp"
         android:textColor="@color/gray"/>
 
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginHorizontal="20dp">
+
+        <RadioButton
+            android:id="@+id/radioEmail1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:checked="true"
+            android:textColor="@color/black"/>
+
+        <RadioButton
+            android:id="@+id/radioPhone1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textColor="@color/black"
+            android:layout_marginStart="20dp"/>
+    </RadioGroup>
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/emailLayout1"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="10dp"
         app:boxCornerRadiusTopStart="10dp"
@@ -71,6 +98,30 @@
             android:textColor="@color/gray"
             android:inputType="textEmailAddress"
             android:drawableStart="@drawable/baseline_email_24"
+            android:drawableTint="@color/gray"
+            android:drawablePadding="10dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:visibility="gone"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusBottomEnd="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone_number"
+            android:textColor="@color/gray"
+            android:inputType="phone"
+            android:drawableStart="@drawable/baseline_phone_24"
             android:drawableTint="@color/gray"
             android:drawablePadding="10dp" />
 

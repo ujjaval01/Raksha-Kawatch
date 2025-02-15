@@ -82,13 +82,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center"
         android:layout_marginHorizontal="20dp">
 
         <RadioButton
             android:id="@+id/radioEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
+            android:text="@string/email"
             android:checked="true"
             android:textColor="@color/black"/>
 
