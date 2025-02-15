@@ -28,9 +28,9 @@ class SplashActivity : AppCompatActivity() {
 
         // Use Handler with Looper.getMainLooper() to avoid deprecation
         Handler(Looper.getMainLooper()).postDelayed({
-            val iSplash = Intent(this@SplashActivity, MainActivity::class.java)
+            val iSplash = Intent(this@SplashActivity, LoginActivity::class.java)
             startActivity(iSplash)
             finish()
-        }, 4000)
+        }, 2500)
     }
 }
