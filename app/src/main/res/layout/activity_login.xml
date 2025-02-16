@@ -10,15 +10,16 @@
     android:background="@color/white"
     tools:context=".LoginActivity">
 
-    <Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/backArrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_arrow_back_24"
             app:tint="@color/blue" />
-    </Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -55,7 +56,7 @@
         android:textColor="@color/gray"/>
 
     <RadioGroup
-        android:id="@+id/radioGroup1"
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -63,7 +64,7 @@
         android:layout_marginHorizontal="20dp">
 
         <RadioButton
-            android:id="@+id/radioEmail1"
+            android:id="@+id/radioEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email"
@@ -71,7 +72,7 @@
             android:textColor="@color/black"/>
 
         <RadioButton
-            android:id="@+id/radioPhone1"
+            android:id="@+id/radioPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Phone Number"
@@ -83,7 +84,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/emailLayout1"
+        android:id="@+id/emailLayout"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="10dp"
         app:boxCornerRadiusTopStart="10dp"
@@ -104,7 +105,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/phoneLayout1"
+        android:id="@+id/phoneLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
