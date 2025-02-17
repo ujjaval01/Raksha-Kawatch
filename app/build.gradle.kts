@@ -41,6 +41,9 @@ android {
 
 dependencies {
 
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.10.1")
+    implementation("com.google.firebase:firebase-database-ktx:20.3.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -49,13 +52,10 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-//    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-//    implementation(platform("com.google.firebase:firebase-bom:33.9.0"))  // Use latest version
-//    implementation("com.google.firebase:firebase-auth")
 
 
 

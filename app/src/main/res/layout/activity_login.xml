@@ -211,11 +211,13 @@
         android:gravity="center">
 
         <ImageView
+            android:id="@+id/facebookBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/icons8_phone"
+            android:src="@drawable/icons8_facebook"
             android:layout_marginEnd="20dp"/>
         <ImageView
+            android:id="@+id/googleBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/icons8_google"

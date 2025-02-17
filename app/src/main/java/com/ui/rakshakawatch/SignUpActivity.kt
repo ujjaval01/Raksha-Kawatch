@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -24,11 +25,20 @@ class SignUpActivity : AppCompatActivity() {
         val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
         val emailLayout = findViewById<TextInputLayout>(R.id.emailLayout)
         val phoneLayout = findViewById<TextInputLayout>(R.id.phoneLayout)
+        val googleBtn = findViewById<ImageView>(R.id.googleBtn)
+        val facebookBtn = findViewById<ImageView>(R.id.facebookBtn)
 
          ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+       googleBtn.setOnClickListener {
+           Toast.makeText(this, "This feature is on maintenance", Toast.LENGTH_SHORT).show()
+       }
+        facebookBtn.setOnClickListener {
+            Toast.makeText(this, "This feature is on maintenance", Toast.LENGTH_SHORT).show()
         }
 
         backArrow.setOnClickListener{
@@ -50,6 +60,7 @@ class SignUpActivity : AppCompatActivity() {
                 phoneLayout.visibility = View.VISIBLE
             }
         }
+
 
 
     }

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -26,6 +27,8 @@ class LoginActivity : AppCompatActivity() {
         val emailLayout1 = findViewById<TextInputLayout>(R.id.emailLayout)
         val phoneLayout1 = findViewById<TextInputLayout>(R.id.phoneLayout)
         val forgotPassword = findViewById<TextView>(R.id.forgotPassword)
+        val googleBtn = findViewById<ImageView>(R.id.googleBtn)
+        val facebookBtn = findViewById<ImageView>(R.id.facebookBtn)
 
 
 
@@ -34,6 +37,13 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        googleBtn.setOnClickListener {
+            Toast.makeText(this, "This feature is on maintenance", Toast.LENGTH_SHORT).show()
+        }
+        facebookBtn.setOnClickListener {
+            Toast.makeText(this, "This feature is on maintenance", Toast.LENGTH_SHORT).show()
+        }
+
         forgotPassword.setOnClickListener{
             val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
