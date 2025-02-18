@@ -12,6 +12,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.ui.rakshakawatch.DemoActivity
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : AppCompatActivity() {
@@ -49,10 +50,9 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        backArrow.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+        backArrow.setOnClickListener {
+            val intent = Intent(this, DemoActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         goSignUp.setOnClickListener{
