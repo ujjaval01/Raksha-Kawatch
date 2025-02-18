@@ -46,6 +46,8 @@ class DemoActivity : AppCompatActivity() {
             }
 
             result.setText(output.toString())
+            firstNum.text.clear()
+            secondNum.text.clear()
         }
     }
 }
