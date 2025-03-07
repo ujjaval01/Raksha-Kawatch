@@ -1,5 +1,5 @@
 <resources>
-    <string name="splash_text">A women safety and security application</string>
+    <string name="splash_text">A Women Safety And Security Application</string>
     <string name="app_name">Raksha Kawatch</string>
     <string name="login_text">Fill your information below or \nregister with your social account</string>
     <string name="create">Create</string>

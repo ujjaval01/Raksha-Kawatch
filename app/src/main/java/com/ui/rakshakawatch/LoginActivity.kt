@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         backArrow.setOnClickListener {
-            val intent = Intent(this, CalculatorActivity::class.java)
+            val intent = Intent(this, BlankActivity::class.java)
             startActivity(intent)
         }
 
