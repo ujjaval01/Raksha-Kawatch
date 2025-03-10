@@ -22,6 +22,7 @@ class BlankActivity : AppCompatActivity() {
         val calBtn = findViewById<Button>(R.id.calBtn)
         val demoBtn = findViewById<Button>(R.id.demoBtn)
         val ttc = findViewById<Button>(R.id.ttt)
+        val demo = findViewById<Button>(R.id.demo)
 
         calBtn.setOnClickListener {
             val intent = Intent(this, CalculatorActivity::class.java)
@@ -33,6 +34,10 @@ class BlankActivity : AppCompatActivity() {
         }
         ttc.setOnClickListener {
             val intent = Intent(this, TicTacToyActivity::class.java)
+            startActivity(intent)
+        }
+        demo.setOnClickListener {
+            val intent = Intent(this, DatePickerActivity::class.java)
             startActivity(intent)
         }
     }
