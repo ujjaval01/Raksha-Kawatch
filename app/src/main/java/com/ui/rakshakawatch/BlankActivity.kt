@@ -23,6 +23,7 @@ class BlankActivity : AppCompatActivity() {
         val demoBtn = findViewById<Button>(R.id.demoBtn)
         val ttc = findViewById<Button>(R.id.ttt)
         val demo = findViewById<Button>(R.id.demo)
+        val webView = findViewById<Button>(R.id.webview)
 
         calBtn.setOnClickListener {
             val intent = Intent(this, CalculatorActivity::class.java)
@@ -38,6 +39,10 @@ class BlankActivity : AppCompatActivity() {
         }
         demo.setOnClickListener {
             val intent = Intent(this, DatePickerActivity::class.java)
+            startActivity(intent)
+        }
+        webView.setOnClickListener {
+            val intent = Intent(this, webViewActivity::class.java)
             startActivity(intent)
         }
     }

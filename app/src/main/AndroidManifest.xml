@@ -35,13 +35,10 @@
         android:theme="@style/Theme.RakshaKawatch"
         tools:targetApi="31">
         <activity
+            android:name=".webViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".DatePickerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DemoActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
             android:exported="false" />
         <activity
             android:name=".BlankActivity"

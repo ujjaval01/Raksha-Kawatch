@@ -9,45 +9,55 @@
     android:gravity="center"
     tools:context=".BlankActivity">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/calBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:gravity="center"
         android:text="Calculator"
-        android:textSize="30sp"
-        android:layout_marginBottom="15dp"/>
-
-    <Button
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:cornerRadius="14dp" />
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/ttt"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="TicTacToy"
-        android:textSize="30sp"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_marginBottom="15dp"/>
-
-
-    <Button
+        app:cornerRadius="14dp"
+        android:layout_marginTop="15dp"/>
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/demoBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Demo 1"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:text="Demo1"
-        android:textSize="30sp"
-        android:layout_marginBottom="15dp"/>
-
-    <Button
+        app:cornerRadius="14dp"
+        android:layout_marginTop="15dp"/>
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/demo"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Demo 2"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:text="Demo2"
-        android:textSize="30sp"
-        android:layout_marginBottom="15dp"/>
-
-
-
+        app:cornerRadius="14dp"
+        android:layout_marginTop="15dp"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/webview"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="WebView"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:cornerRadius="14dp"
+        android:layout_marginTop="15dp"/>
 
 </LinearLayout>
 
