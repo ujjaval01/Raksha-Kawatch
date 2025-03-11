@@ -37,14 +37,15 @@ class DatePickerActivity : AppCompatActivity() {
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val demo = calendar.get(Calendar.DAY_OF_WEEK)
 
         val datePickerDialog = DatePickerDialog(
             this,
-            { _, selectedYear, selectedMonth, selectedDay ->
-                val selectedDate = "${selectedDay}/${selectedMonth + 1}/${selectedYear}"
+            { _, selectedMonth, selectedDay, selectedDayOfWeek ->
+                val selectedDate = "${selectedDayOfWeek}/${selectedMonth + 1}/${selectedDay}"
                 tv2.text = selectedDate
             },
-            year,
+            demo,
             month,
             day
         )
