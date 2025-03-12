@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="220dp"
         android:layout_marginTop="180dp"
-        android:src="@drawable/app_logo"/>
+        android:src="@mipmap/app_logo"/>
     <TextView
         android:id="@+id/appName"
         android:layout_width="wrap_content"
