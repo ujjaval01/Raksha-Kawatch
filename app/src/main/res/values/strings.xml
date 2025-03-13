@@ -24,6 +24,16 @@
     <string name="todo">TODO</string>
     <string name="nav_open">Open Navigation Drawer</string>
     <string name="nav_close">Close Navigation Drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Logout</string>
+    <string name="about_us">About Us</string>
+    <string name="settings_privacy"><![CDATA[Settings & Privacy]]></string>
+    <string name="manage_guardians">Manage Guardians</string>
+    <string name="view_complaint">View Complaint</string>
+    <string name="create_complaint">Create Complaint</string>
+    <string name="profile">Profile</string>
+    <string name="dashboard">Dashboard</string>
 
 
 </resources>

@@ -15,14 +15,6 @@
         android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.INTERNET" />
-<!--    <uses-permission android:name="android.permission.CAMERA" />-->
-<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
-<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
-<!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
-<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
-<!--    <uses-permission-->
-<!--        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"-->
-<!--        tools:ignore="ScopedStorage" />-->
 
     <application
         android:allowBackup="true"
@@ -35,35 +27,60 @@
         android:theme="@style/Theme.RakshaKawatch"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity2"
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
             android:name=".webViewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".DatePickerActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".BlankActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".DemoActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".TicTacToyActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".CalculatorActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ResetPasswordActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".EmailVerificationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ForgotPasswordActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -72,20 +89,20 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".SignUpActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.RakshaKawatch"
+            android:windowSoftInputMode="adjustResize">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
     </application>
 

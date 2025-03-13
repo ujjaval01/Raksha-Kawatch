@@ -12,6 +12,11 @@
         android:title="Setting" />
 
     <item
+        android:id="@+id/nav_privac"
+        android:title="" />
+
+
+    <item
         android:id="@+id/nav_more_apps"
         android:icon="@drawable/baseline_open_in_new_24"
         android:title="New User" />

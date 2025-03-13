@@ -6,25 +6,37 @@
     <group
         android:checkableBehavior="single"/>
 
-        <item
-            android:id="@+id/nav_prime"
-            android:icon="@drawable/baseline_trending_up_24"
-            android:title="Prime"/>
     <item
-        android:id="@+id/nav_prime2"
+        android:id="@+id/nav_dashboard"
         android:icon="@drawable/baseline_trending_up_24"
-        android:title="Prime"/>
+        android:title="@string/dashboard"/>
     <item
-        android:id="@+id/nav_prime3"
+        android:id="@+id/nav_profile"
         android:icon="@drawable/baseline_trending_up_24"
-        android:title="Prime"/>
+        android:title="@string/profile"/>
     <item
-        android:id="@+id/nav_prime4"
+        android:id="@+id/nav_createComplaint"
         android:icon="@drawable/baseline_trending_up_24"
-        android:title="Prime"/>
+        android:title="@string/create_complaint"/>
     <item
-        android:id="@+id/nav_prime5"
+        android:id="@+id/nav_viewComplaint"
         android:icon="@drawable/baseline_trending_up_24"
-        android:title="Prime"/>
+        android:title="@string/view_complaint"/>
+    <item
+        android:id="@+id/nav_manageGuardians"
+        android:icon="@drawable/baseline_trending_up_24"
+        android:title="@string/manage_guardians"/>
+    <item
+        android:id="@+id/nav_settingPrivacy"
+        android:icon="@drawable/baseline_trending_up_24"
+        android:title="@string/settings_privacy"/>
+    <item
+        android:id="@+id/nav_aboutUs"
+        android:icon="@drawable/baseline_trending_up_24"
+        android:title="@string/about_us"/>
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/baseline_trending_up_24"
+        android:title="@string/logout"/>
 
 </menu>

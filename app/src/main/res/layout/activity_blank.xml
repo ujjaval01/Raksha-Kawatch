@@ -58,6 +58,16 @@
         android:textStyle="bold"
         app:cornerRadius="14dp"
         android:layout_marginTop="15dp"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mainActivity"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Main Activity"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:cornerRadius="14dp"
+        android:layout_marginTop="15dp"/>
 
 </LinearLayout>
 
