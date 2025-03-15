@@ -1,16 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SettingFragment">
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Setting"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="50sp"/>
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Profile Settings -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile Settings"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingVertical="8dp" />
+
+        <Button
+            android:id="@+id/btnManageProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manage Profile" />
+
+        <Button
+            android:id="@+id/btnManageGuardians"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manage Guardians" />
+
+        <!-- Security Settings -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Security Settings"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingVertical="8dp" />
+
+        <Button
+            android:id="@+id/btnChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Password" />
+
+        <Button
+            android:id="@+id/btnSetSecurityQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Set Security Question" />
+
+        <!-- Notification Settings -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notification Settings"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingVertical="8dp" />
+
+        <Switch
+            android:id="@+id/switchNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enable Notifications" />
+
+        <!-- SOS Settings -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SOS Settings"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingVertical="8dp" />
+
+        <Button
+            android:id="@+id/btnCustomSosMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Customize SOS Message" />
+
+        <Button
+            android:id="@+id/btnManageEmergencyContacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manage Emergency Contacts" />
+
+        <!-- Appearance Settings -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Appearance Settings"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingVertical="8dp" />
+
+        <Switch
+            android:id="@+id/switchDarkMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enable Dark Mode" />
+
+        <!-- About the App -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About the App"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingVertical="8dp" />
+
+        <Button
+            android:id="@+id/btnAboutApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About and Privacy Policy" />
+
+    </LinearLayout>
+
+</ScrollView>

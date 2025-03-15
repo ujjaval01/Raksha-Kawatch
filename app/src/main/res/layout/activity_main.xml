@@ -5,82 +5,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-<androidx.drawerlayout.widget.DrawerLayout
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-    android:id="@+id/drawer_layout">
-
-    <RelativeLayout
+    <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/drawer_layout">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@color/blue"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@android:color/transparent"
-                app:menu="@menu/bottom_menu"
-                app:labelVisibilityMode="labeled"/>
+                android:layout_height="55dp"
 
-            <com.google.android.material.bottomappbar.BottomAppBar
-                android:id="@+id/bottomAppBar"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+            <FrameLayout
+                android:id="@+id/fragment_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:backgroundTint="@color/blue"
-                app:fabCradleMargin="10dp"
-                app:fabCradleRoundedCornerRadius="28dp"
-                app:fabCradleVerticalOffset="8dp"
+                android:layout_height="match_parent"
+                />
 
-                app:fabAlignmentMode="center"
-                app:hideOnScroll="true"/>
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_navigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@android:color/transparent"
+                    app:menu="@menu/bottom_menu"
+                    app:labelVisibilityMode="labeled"/>
+
+                <com.google.android.material.bottomappbar.BottomAppBar
+                    android:id="@+id/bottomAppBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:backgroundTint="@color/blue"
+                    app:fabCradleMargin="10dp"
+                    app:fabCradleRoundedCornerRadius="28dp"
+                    app:fabCradleVerticalOffset="8dp"
+
+                    app:fabAlignmentMode="center"
+                    app:hideOnScroll="true"/>
 
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="62dp"
-                android:layout_height="62dp"
-                android:layout_gravity="center|bottom"
-                android:layout_marginBottom="40dp"
-                android:backgroundTint="@color/purple_200"
-                android:src="@drawable/baseline_map_24"
-                android:contentDescription="@string/todo"
-                app:maxImageSize="55dp"/>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginBottom="40dp"
+                    android:backgroundTint="@color/purple_200"
+                    android:src="@drawable/baseline_map_24"
+                    android:contentDescription="@string/todo"
+                    app:maxImageSize="55dp"/>
 
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    </RelativeLayout>
+        </RelativeLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="270dp"
-        android:layout_height="match_parent"
-        android:id="@+id/navigation_drawer"
-        android:layout_gravity="start"
-        app:itemIconTint="@color/blue"
-        app:itemTextColor="@color/blue"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_menu"/>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="270dp"
+            android:layout_height="match_parent"
+            android:id="@+id/navigation_drawer"
+            android:layout_gravity="start"
+            app:itemIconTint="@color/blue"
+            app:itemTextColor="@color/blue"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/nav_menu"/>
 
-</androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

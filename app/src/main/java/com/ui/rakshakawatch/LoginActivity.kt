@@ -20,7 +20,6 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
-
         val backArrow = findViewById<ImageView>(R.id.backArrow)
         val goSignUp = findViewById<LinearLayout>(R.id.goSignUp)
         val radioGroup1 = findViewById<RadioGroup>(R.id.radioGroup)
