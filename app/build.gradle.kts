@@ -58,9 +58,13 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+
     implementation("com.airbnb.android:lottie:3.4.0")
 
 
+    //animation Library for bottom navbar
+    implementation("androidx.interpolator:interpolator:1.0.0")
+    // handling map
     implementation("org.osmdroid:osmdroid-android:6.1.11")
 
 

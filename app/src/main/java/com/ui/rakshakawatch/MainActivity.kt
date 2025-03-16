@@ -1,10 +1,11 @@
 package com.ui.rakshakawatch
 
+import FragmentTools
 import android.Manifest
 import android.content.pm.PackageManager
-import android.location.Location
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -20,7 +21,18 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
 import com.ui.rakshakawatch.databinding.ActivityMainBinding
-import com.ui.rakshakawatch.fragments.*
+import com.ui.rakshakawatch.fragments.AboutFragment
+import com.ui.rakshakawatch.fragments.CreateComplainFragment
+import com.ui.rakshakawatch.fragments.DashboardFragment
+import com.ui.rakshakawatch.fragments.EmergencyContactsFragment
+import com.ui.rakshakawatch.fragments.HomeFragment
+import com.ui.rakshakawatch.fragments.LogoutFragment
+import com.ui.rakshakawatch.fragments.ManageGuardianFragment
+import com.ui.rakshakawatch.fragments.MapFragment
+import com.ui.rakshakawatch.fragments.ProfileFragment
+import com.ui.rakshakawatch.fragments.SettingPrivacyFragment
+import com.ui.rakshakawatch.fragments.ShareFragment
+import com.ui.rakshakawatch.fragments.ViewComplainFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,6 +40,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var binding: ActivityMainBinding
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
+
 
     companion object {
         private const val REQUEST_PERMISSIONS_REQUEST_CODE = 1
@@ -40,10 +53,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+        // Drawer Setup
         drawerLayout = binding.drawerLayout
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, binding.toolbar, R.string.nav_open, R.string.nav_close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
 
         binding.navigationDrawer.setNavigationItemSelectedListener(this)
         fragmentManager = supportFragmentManager
@@ -51,19 +67,42 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         binding.bottomNavigation.background = null
         binding.bottomNavigation.setOnItemSelectedListener { item ->
-            binding.bottomNavigation.menu.setGroupCheckable(0, true, true)  // Enable item selection
-            when (item.itemId) {
-                R.id.bottom_home -> openFragment(HomeFragment())
-                R.id.bottom_emergency_contacts -> openFragment(EmergencyContactsFragment())
-                R.id.bottom_tools -> openFragment(ToolsFragment())
-                R.id.bottom_setting -> openFragment(SettingPrivacyFragment())
+            binding.bottomNavigation.menu.setGroupCheckable(0, true, true)
+
+            val fragment = when (item.itemId) {
+                R.id.bottom_home -> HomeFragment()
+                R.id.bottom_emergency_contacts -> EmergencyContactsFragment()
+                R.id.bottom_tools -> FragmentTools()
+                R.id.bottom_setting -> SettingPrivacyFragment()
+                else -> null
             }
+
+            fragment?.let { openFragment(it) }
+
+            // Add bounce animation to the selected item
+            val selectedView = binding.bottomNavigation.findViewById<View>(item.itemId)
+            selectedView?.animate()?.scaleX(1.2f)?.scaleY(1.2f)?.setDuration(150)?.withEndAction {
+                selectedView.animate().scaleX(1f).scaleY(1f).duration = 150
+            }?.start()
+
+            drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
 
 
+        var isMapActive = false
         binding.fab.setOnClickListener {
             if (checkLocationPermission()) {
+                isMapActive = !isMapActive
+
+                // FAB Animation (Rotation)
+                binding.fab.animate().rotation(if (isMapActive) 45f else 0f).duration = 300
+
+                // Change FAB color based on the state
+                val iconColor = if (isMapActive) R.color.red else R.color.black
+                binding.fab.imageTintList = ContextCompat.getColorStateList(this, iconColor)
+                binding.fab.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.teal_200git ))
+
                 // Clear selection from BottomNavigationView
                 binding.bottomNavigation.menu.setGroupCheckable(0, true, false)
                 for (i in 0 until binding.bottomNavigation.menu.size()) {
@@ -71,13 +110,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
                 binding.bottomNavigation.menu.setGroupCheckable(0, true, true)
 
-                // Open the MapFragment
+                binding.bottomNavigation.selectedItemId = R.id.fab
                 openFragment(MapFragment())
             } else {
                 requestLocationPermission()
             }
         }
 
+//
 
 
 

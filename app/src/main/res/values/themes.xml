@@ -5,10 +5,12 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
 
-        <item name="colorPrimary">@color/blue</item>
-        <item name="colorPrimaryVariant">@color/blue</item>
-        <item name="android:statusBarColor">@color/blue</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="android:statusBarColor">@color/black</item>
     </style>
 
-    <style name="Theme.RakshaKawatch" parent="Base.Theme.RakshaKawatch" />
+
+    <style name="Theme.RakshaKawatch" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
+
 </resources>

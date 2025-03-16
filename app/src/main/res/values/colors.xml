@@ -3,7 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="lightBlack">#1C1E20</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blue" >#007EF2</color>
+    <color name="blue" >#1788F1</color>
     <color name="gray">#423A3A</color>
     <color name="yellow">#FFC107</color>
     <color name="deepSky">#125D96</color>
@@ -14,6 +14,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="lavender">#8692f7</color>
     <color name="grey">#d2d2d2</color>
+    <color name="red">#FF0000</color>
+
+    <color name="bottom_nav_color">#FF6200EE</color>
+
 
 
 

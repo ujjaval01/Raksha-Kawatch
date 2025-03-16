@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/bottom_map">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -8,10 +9,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="70dp"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/gray"
-        android:src="@android:drawable/ic_menu_rotate"
+        android:backgroundTint="@color/grey"
+        android:src="@drawable/baseline_rotate_right_24"
         android:contentDescription="@string/todo" />
 
     <org.osmdroid.views.MapView
