@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 // Change FAB color based on the state
                 val iconColor = if (isMapActive) R.color.red else R.color.black
                 binding.fab.imageTintList = ContextCompat.getColorStateList(this, iconColor)
-                binding.fab.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.teal_200git ))
+                binding.fab.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.teal_200))
 
                 // Clear selection from BottomNavigationView
                 binding.bottomNavigation.menu.setGroupCheckable(0, true, false)
@@ -116,12 +116,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 requestLocationPermission()
             }
         }
-
-//
-
-
-
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.drawer_layout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
