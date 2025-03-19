@@ -25,7 +25,7 @@ import com.ui.rakshakawatch.fragments.AboutFragment
 import com.ui.rakshakawatch.fragments.CreateComplainFragment
 import com.ui.rakshakawatch.fragments.DashboardFragment
 import com.ui.rakshakawatch.fragments.EmergencyContactsFragment
-import com.ui.rakshakawatch.fragments.HomeFragment
+import HomeFragment
 import com.ui.rakshakawatch.fragments.LogoutFragment
 import com.ui.rakshakawatch.fragments.ManageGuardianFragment
 import com.ui.rakshakawatch.fragments.MapFragment
@@ -185,10 +185,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun openFragment(fragment: Fragment) {
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.setCustomAnimations(
-            android.R.anim.slide_in_left,
-            android.R.anim.fade_out,
-            android.R.anim.fade_in,
-            android.R.anim.slide_out_right
+            R.anim.scale_rotate_in,
+            R.anim.slide_fade_out,
+            R.anim.fade_in_scale_up,
+            R.anim.slide_down
         )
         fragmentTransaction.replace(R.id.fragment_container, fragment)
         fragmentTransaction.commit()

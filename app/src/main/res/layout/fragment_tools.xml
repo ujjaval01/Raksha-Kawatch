@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,331 +6,340 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-<LinearLayout
-    android:padding="10dp"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="---- Safety Tools ----"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:textColor="@color/blue"
-        android:fontFamily="sans-serif-medium"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="8dp"/>
-
-    <GridLayout
-        android:id="@+id/tool_grid"
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="3">
+        android:gravity="center_horizontal"> <!-- Center content horizontally -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="---- Safety Tools ----"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="@color/blue"
+            android:fontFamily="sans-serif-medium"
+            android:paddingBottom="8dp"/>
 
         <LinearLayout
-            android:id="@+id/ll1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/neumorphic_background"
-            android:elevation="6dp"
-            android:layout_margin="6dp"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"> <!-- Center content -->
 
-            <ImageView
-                android:id="@+id/feature_icon2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_menu_mylocation"
-                app:tint="@color/red" />
-
-            <TextView
-                android:id="@+id/feature_name2"
+            <GridLayout
+                android:id="@+id/tool_grid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Share Location"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-medium"/>
+                android:columnCount="3"
+                android:layout_gravity="center"> <!-- Center GridLayout -->
+
+
+                <LinearLayout
+                    android:id="@+id/ll1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/neumorphic_background"
+                    android:elevation="6dp"
+                    android:layout_margin="6dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/feature_icon2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_menu_mylocation"
+                        app:tint="@color/red" />
+
+                    <TextView
+                        android:id="@+id/feature_name2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Share Location"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/neumorphic_background"
+                    android:elevation="6dp"
+                    android:layout_margin="6dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/feature_icon3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_contact_phone_24"
+                        app:tint="@color/red" />
+
+                    <TextView
+                        android:id="@+id/feature_name3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Em. Contact"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/neumorphic_background"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/feature_icon4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_add_alert_24"
+                        app:tint="@color/red" />
+
+                    <TextView
+                        android:id="@+id/feature_name4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Loud Siren"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/neumorphic_background"
+                    android:elevation="6dp"
+                    android:layout_margin="6dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/feature_icon5"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_videocam_24"
+                        app:tint="@color/red" />
+
+                    <TextView
+                        android:id="@+id/feature_name5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Video Recording"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/neumorphic_background"
+                    android:elevation="6dp"
+                    android:layout_margin="6dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/feature_icon6"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_flash_auto_24"
+                        app:tint="@color/red" />
+
+                    <TextView
+                        android:id="@+id/feature_name6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Flash Blinker"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/neumorphic_background"
+                    android:elevation="6dp"
+                    android:layout_margin="6dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/feature_icon7"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_message_24"
+                        app:tint="@color/red" />
+
+                    <TextView
+                        android:id="@+id/feature_name7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Em. Message"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/neumorphic_background"
+                    android:elevation="6dp"
+                    android:layout_margin="6dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/feature_icon8"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_phone_24"
+                        app:tint="@color/red" />
+
+                    <TextView
+                        android:id="@+id/feature_name8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Fake Call"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/neumorphic_background"
+                    android:elevation="6dp"
+                    android:layout_margin="6dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/feature_icon9"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_place_24"
+                        app:tint="@color/red" />
+
+                    <TextView
+                        android:id="@+id/feature_name9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Safe Place"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/neumorphic_background"
+                    android:elevation="6dp"
+                    android:layout_margin="6dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/feature_icon0"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_menu_mylocation"
+                        app:tint="@color/red" />
+
+                    <TextView
+                        android:id="@+id/feature_name0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Share Location"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/neumorphic_background"
+                    android:elevation="6dp"
+                    android:layout_margin="6dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/feature_icon11"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_menu_mylocation"
+                        app:tint="@color/red" />
+
+                    <TextView
+                        android:id="@+id/feature_name11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Share Location"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/neumorphic_background"
+                    android:elevation="6dp"
+                    android:layout_margin="6dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/feature_icon1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_menu_mylocation"
+                        app:tint="@color/red" />
+
+                    <TextView
+                        android:id="@+id/feature_name1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Share Location"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+
+
+
+
+            </GridLayout>
+
         </LinearLayout>
+    </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ll2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/neumorphic_background"
-            android:elevation="6dp"
-            android:layout_margin="6dp"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/feature_icon3"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/baseline_contact_phone_24"
-                app:tint="@color/red" />
-
-            <TextView
-                android:id="@+id/feature_name3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Em. Contact"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-medium"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="6dp"
-            android:background="@drawable/neumorphic_background"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/feature_icon4"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/baseline_add_alert_24"
-                app:tint="@color/red" />
-
-            <TextView
-                android:id="@+id/feature_name4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Loud Siren"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-medium"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/neumorphic_background"
-            android:elevation="6dp"
-            android:layout_margin="6dp"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/feature_icon5"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/baseline_videocam_24"
-                app:tint="@color/red" />
-
-            <TextView
-                android:id="@+id/feature_name5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Video Recording"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-medium"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/neumorphic_background"
-            android:elevation="6dp"
-            android:layout_margin="6dp"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/feature_icon6"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/baseline_flash_auto_24"
-                app:tint="@color/red" />
-
-            <TextView
-                android:id="@+id/feature_name6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Flash Blinker"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-medium"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/neumorphic_background"
-            android:elevation="6dp"
-            android:layout_margin="6dp"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/feature_icon7"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/baseline_message_24"
-                app:tint="@color/red" />
-
-            <TextView
-                android:id="@+id/feature_name7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Em. Message"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-medium"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/neumorphic_background"
-            android:elevation="6dp"
-            android:layout_margin="6dp"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/feature_icon8"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/baseline_phone_24"
-                app:tint="@color/red" />
-
-            <TextView
-                android:id="@+id/feature_name8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Fake Call"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-medium"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/neumorphic_background"
-            android:elevation="6dp"
-            android:layout_margin="6dp"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/feature_icon9"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/baseline_place_24"
-                app:tint="@color/red" />
-
-            <TextView
-                android:id="@+id/feature_name9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Safe Place"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-medium"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/neumorphic_background"
-            android:elevation="6dp"
-            android:layout_margin="6dp"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/feature_icon0"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_menu_mylocation"
-                app:tint="@color/red" />
-
-            <TextView
-                android:id="@+id/feature_name0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Share Location"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-medium"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/neumorphic_background"
-            android:elevation="6dp"
-            android:layout_margin="6dp"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/feature_icon11"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_menu_mylocation"
-                app:tint="@color/red" />
-
-            <TextView
-                android:id="@+id/feature_name11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Share Location"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-medium"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/neumorphic_background"
-            android:elevation="6dp"
-            android:layout_margin="6dp"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/feature_icon1"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_menu_mylocation"
-                app:tint="@color/red" />
-
-            <TextView
-                android:id="@+id/feature_name1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Share Location"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-medium"/>
-        </LinearLayout>
-
-
-    </GridLayout>
-
-
-</LinearLayout>
-
-    </ScrollView>
+</ScrollView>
