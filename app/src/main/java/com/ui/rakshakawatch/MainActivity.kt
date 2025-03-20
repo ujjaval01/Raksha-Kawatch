@@ -1,6 +1,7 @@
 package com.ui.rakshakawatch
 
 import FragmentTools
+import HomeFragment
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -22,10 +23,9 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
 import com.ui.rakshakawatch.databinding.ActivityMainBinding
 import com.ui.rakshakawatch.fragments.AboutFragment
+import com.ui.rakshakawatch.fragments.ChatbotFragment
 import com.ui.rakshakawatch.fragments.CreateComplainFragment
 import com.ui.rakshakawatch.fragments.DashboardFragment
-import com.ui.rakshakawatch.fragments.EmergencyContactsFragment
-import HomeFragment
 import com.ui.rakshakawatch.fragments.LogoutFragment
 import com.ui.rakshakawatch.fragments.ManageGuardianFragment
 import com.ui.rakshakawatch.fragments.MapFragment
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             val fragment = when (item.itemId) {
                 R.id.bottom_home -> HomeFragment()
-                R.id.bottom_emergency_contacts -> EmergencyContactsFragment()
+                R.id.bottom_chatbot -> ChatbotFragment()
                 R.id.bottom_tools -> FragmentTools()
                 R.id.bottom_setting -> SettingPrivacyFragment()
                 else -> null

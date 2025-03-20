@@ -67,6 +67,15 @@ dependencies {
     // handling map
     implementation("org.osmdroid:osmdroid-android:6.1.11")
 
+    // ai or chatbot
+
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation("org.json:json:20210307")
+
+
+
+
+
 
 
 }

@@ -17,7 +17,10 @@
         android:background="@drawable/neumorphic_background"
         android:padding="16dp">
 
+
+
         <ImageView
+            android:id="@+id/profile"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@mipmap/vansi2_modified"
@@ -90,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="18dp"
         android:text="Emergency Help \nNeeded?"
         android:textStyle="bold"
         android:textAlignment="center"
@@ -117,93 +120,105 @@
         android:layout_gravity="center"
         android:textColor="@color/black" />
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <!-- Emergency Options Grid -->
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:padding="1dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="50dp">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="25dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:background="@drawable/neumorphic_bg"
-            android:text="Police 100"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="25dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:background="@drawable/neumorphic_bg"
-            android:text="Women Safety \n1090"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="25dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:background="@drawable/neumorphic_bg"
-            android:text="Police 100"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="25dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:background="@drawable/neumorphic_bg"
-            android:text="Police 100"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="25dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:background="@drawable/neumorphic_bg"
-            android:text="Police 100"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="25dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:background="@drawable/neumorphic_bg"
-            android:text="Police 100"
-            />
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="25dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:background="@drawable/neumorphic_bg"
-            android:text="Police 100"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="25dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:background="@drawable/neumorphic_bg"
-            android:text="Police 100"
-            />
+        android:layout_height="280dp"
+        android:background="@drawable/otp_box2">
 
 
-    </GridLayout>
-    </ScrollView>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Emergency Options Grid -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:padding="1dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="50dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPolice"
+                    android:layout_width="25dp"
+                    android:layout_height="100dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/neumorphic_bg"
+                    android:text="Police 100"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnWomenSafety"
+                    android:layout_width="25dp"
+                    android:layout_height="100dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/neumorphic_bg"
+                    android:text="Women Safety \n1090"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="25dp"
+                    android:layout_height="100dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/neumorphic_bg"
+                    android:text="Police 100"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="25dp"
+                    android:layout_height="100dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/neumorphic_bg"
+                    android:text="Police 100"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="25dp"
+                    android:layout_height="100dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/neumorphic_bg"
+                    android:text="Police 100"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="25dp"
+                    android:layout_height="100dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/neumorphic_bg"
+                    android:text="Police 100"
+                    />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="25dp"
+                    android:layout_height="100dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/neumorphic_bg"
+                    android:text="Police 100"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="25dp"
+                    android:layout_height="100dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/neumorphic_bg"
+                    android:text="Police 100"
+                    />
+            </GridLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+
+
 
 
 
