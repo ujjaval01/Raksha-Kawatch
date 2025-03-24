@@ -18,6 +18,8 @@ lifecycleViewmodelKtx = "2.8.7"
 googleServices = "4.4.2"
 firebaseAuth = "23.2.0"
 playServicesMaps = "19.1.0"
+volley = "1.2.1"
+preferenceKtx = "1.2.1"
 
 [libraries]
 android-v1090 = { module = "com.mapbox.maps:android", version.ref = "android" }
@@ -37,6 +39,8 @@ androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifec
 google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
+androidx-preference-ktx = { group = "androidx.preference", name = "preference-ktx", version.ref = "preferenceKtx" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

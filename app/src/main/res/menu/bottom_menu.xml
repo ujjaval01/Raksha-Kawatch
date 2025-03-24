@@ -5,18 +5,19 @@
         android:id="@+id/bottom_home"
         android:title="Home"
         android:icon="@drawable/baseline_home_24"/>
-
-    <item
-        android:id="@+id/bottom_chatbot"
-        android:title="Chat"
-        android:icon="@drawable/baseline_chat_24"/>
-    <item
-        android:title="Map"
-        android:enabled="true"/>
     <item
         android:id="@+id/bottom_tools"
         android:title="Tools"
         android:icon="@drawable/baseline_shopping_cart_24"/>
+    <item
+        android:id="@+id/bottom_map"
+        android:icon="@drawable/baseline_map_icon_24"
+        android:title="Map"
+        android:enabled="true"/>
+    <item
+        android:id="@+id/bottom_chatbot"
+        android:title="Help"
+        android:icon="@drawable/baseline_chat_24"/>
     <item
         android:id="@+id/bottom_setting"
         android:title="Setting"

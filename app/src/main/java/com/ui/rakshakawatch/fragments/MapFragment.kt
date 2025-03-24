@@ -1,95 +1,89 @@
-package com.ui.rakshakawatch.fragments
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.ui.rakshakawatch.R
-import org.osmdroid.config.Configuration
-import org.osmdroid.util.GeoPoint
-import org.osmdroid.views.MapView
-import org.osmdroid.views.overlay.Marker
-import org.osmdroid.views.overlay.compass.CompassOverlay
-import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
-import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MapFragment : Fragment() {
+class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
-    private lateinit var map: MapView
-    private lateinit var locationOverlay: MyLocationNewOverlay
+    private lateinit var mapView: MapView
+    private lateinit var googleMap: GoogleMap
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_map, container, false)
-
-        // Initialize map configuration
-        Configuration.getInstance().load(requireContext(), requireContext().getSharedPreferences("osm_prefs", Context.MODE_PRIVATE))
-
-        map = view.findViewById(R.id.map)
-        map.setMultiTouchControls(true)
-        map.controller.setZoom(18.0)
-
-        // Compass overlay
-        val compassOverlay = CompassOverlay(context, map)
-        compassOverlay.enableCompass()
-        map.overlays.add(compassOverlay)
-
-        // Initialize and configure location overlay
-        locationOverlay = MyLocationNewOverlay(GpsMyLocationProvider(requireContext()), map)
-        locationOverlay.enableMyLocation()
-        locationOverlay.enableFollowLocation()
-        map.overlays.add(locationOverlay)
-
-        // Refresh button to update location
-        val refreshButton = view.findViewById<FloatingActionButton>(R.id.btn_refresh)
-        refreshButton.setOnClickListener {
-            refreshLocation()
-        }
-
-        return view
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
     }
 
-    private fun refreshLocation() {
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            val location = locationOverlay.myLocation
-            if (location != null) {
-                val geoPoint = GeoPoint(location.latitude, location.longitude)
-                map.controller.animateTo(geoPoint)
-                map.overlays.clear()
+    override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-                // Add a marker for the current location
-                val marker = Marker(map)
-                marker.position = geoPoint
-                marker.title = "You are here"
-                marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-                map.overlays.add(marker)
+        mapView = view.findViewById(R.id.mapView)
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)
+    }
 
-                Toast.makeText(requireContext(), "Location refreshed!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(requireContext(), "Unable to get current location!", Toast.LENGTH_SHORT).show()
-            }
+    override fun onMapReady(map: GoogleMap) {
+        googleMap = map
+        googleMap.uiSettings.isZoomControlsEnabled = true
+        googleMap.uiSettings.isMyLocationButtonEnabled = true
+
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            googleMap.isMyLocationEnabled = true
+            getUserLocation()
         } else {
-            Toast.makeText(requireContext(), "Location permission not granted!", Toast.LENGTH_SHORT).show()
+            requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1001)
+        }
+    }
+
+    private fun getUserLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                location?.let {
+                    val userLatLng = LatLng(it.latitude, it.longitude)
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15f))
+                    googleMap.addMarker(MarkerOptions().position(userLatLng).title("Your Location"))
+                }
+            }
         }
     }
 
     override fun onResume() {
         super.onResume()
-        map.onResume()
+        mapView.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        map.onPause()
+        mapView.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
     }
 }

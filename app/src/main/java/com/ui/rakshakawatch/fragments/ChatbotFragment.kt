@@ -1,6 +1,7 @@
 package com.ui.rakshakawatch.fragments
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +24,9 @@ import java.io.IOException
 class ChatbotFragment : Fragment() {
 
     private val client = OkHttpClient()
-    private val apiKey = "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"  // Replace with your valid OpenAI API key
+    public val apiKey = "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"  // Replace with your valid OpenAI API key
+//    val apiKey = BuildConfig.API_KEY
+
     private lateinit var chatLayout: LinearLayout
     private lateinit var userInput: EditText
     private lateinit var sendButton: Button
@@ -129,7 +132,7 @@ class ChatbotFragment : Fragment() {
             )
             params.marginEnd = 16
             params.topMargin = 8
-            params.gravity = android.view.Gravity.END
+            params.gravity = Gravity.END
             messageView.layoutParams = params
         } else {
             messageView.setBackgroundResource(R.drawable.ai_message_bg)
@@ -139,7 +142,7 @@ class ChatbotFragment : Fragment() {
             )
             params.marginStart = 16
             params.topMargin = 8
-            params.gravity = android.view.Gravity.START
+            params.gravity = Gravity.START
             messageView.layoutParams = params
         }
 

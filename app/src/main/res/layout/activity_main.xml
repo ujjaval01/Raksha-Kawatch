@@ -8,81 +8,38 @@
     android:orientation="horizontal"
     tools:context=".MainActivity">
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <FrameLayout
+            android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/blue"
-                android:elevation="6dp"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-            <FrameLayout
-                android:id="@+id/fragment_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/toolbar"
-                app:layout_anchorGravity="center" />
-
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.bottomappbar.BottomAppBar
-                    android:id="@+id/bottomAppBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:background="@color/blue"
-                    app:fabCradleMargin="10dp"
-                    app:fabCradleRoundedCornerRadius="50dp">
-
-                    <com.google.android.material.bottomnavigation.BottomNavigationView
-                        android:id="@+id/bottom_navigation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:background="@android:color/transparent"
-                        app:itemIconSize="26dp"
-                        app:itemIconTint="@color/black"
-                        app:itemTextColor="@color/nav_item_color"
-                        app:labelVisibilityMode="labeled"
-                        app:menu="@menu/bottom_menu" />
-
-                </com.google.android.material.bottomappbar.BottomAppBar>
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/fab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/baseline_map_24"
-                    app:layout_anchor="@id/bottomAppBar"
-                    app:maxImageSize="40dp"
-                    app:tint="@color/lavender" />
-
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
-        </RelativeLayout>
-        <!-- Navigation Drawer -->
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation_drawer"
-            android:layout_width="270dp"
             android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:headerLayout="@layout/nav_header"
-            app:itemTextColor="@color/black"
-            app:menu="@menu/nav_menu" />
+            app:layout_anchorGravity="center"
+            android:layout_above="@+id/bottomNavigation"/>
 
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+        <com.zagori.bottomnavbar.BottomNavBar
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
+
+
+            app:bn_background_color="@color/white"
+            app:bn_item_color="@drawable/bottom_nav_item_state"
+            app:bn_menu="@menu/bottom_menu"
+
+            app:bn_curve_vertical_offset="0dp"
+            app:bn_curve_margin="6dp"
+            app:bn_curve_rounded_corner_radius="8dp"
+
+
+            app:bn_fab_size="normal"
+            app:bn_fab_menu_index="2"
+            app:bn_fab_background_color="@color/white"
+            />
+    </RelativeLayout>
 </LinearLayout>

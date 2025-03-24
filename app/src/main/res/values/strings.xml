@@ -39,6 +39,8 @@
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
     <string name="sos_button">SOS Button</string>
     <string name="press_the_button_to_send_sos">Press the button to send SOS</string>
+    <string name="quick_shortcuts">Quick Shortcuts</string>
+    <string name="current_location">Current Location</string>
 
 
 </resources>

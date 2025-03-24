@@ -7,10 +7,10 @@
     android:background="@color/white">
 
     <LinearLayout
-        android:padding="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center_horizontal"> <!-- Center content horizontally -->
 
         <TextView
@@ -24,27 +24,26 @@
             android:paddingBottom="8dp"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"> <!-- Center content -->
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"> <!-- Center content -->
 
             <GridLayout
                 android:id="@+id/tool_grid"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="3"
-                android:layout_gravity="center"> <!-- Center GridLayout -->
+                android:layout_gravity="center"
+                android:columnCount="3"> <!-- Center GridLayout -->
 
 
                 <LinearLayout
                     android:id="@+id/ll1"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_margin="6dp"
                     android:background="@drawable/neumorphic_background"
                     android:elevation="6dp"
-                    android:layout_margin="6dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/feature_icon2"
@@ -58,21 +57,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Share Location"
-                        android:textSize="10sp"
                         android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll2"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_margin="6dp"
                     android:background="@drawable/neumorphic_background"
                     android:elevation="6dp"
-                    android:layout_margin="6dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/feature_icon3"
@@ -86,19 +85,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Em. Contact"
-                        android:textSize="10sp"
                         android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_row="0"
                     android:layout_margin="6dp"
                     android:background="@drawable/neumorphic_background"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/feature_icon4"
@@ -112,20 +112,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Loud Siren"
-                        android:textSize="10sp"
                         android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_margin="6dp"
                     android:background="@drawable/neumorphic_background"
                     android:elevation="6dp"
-                    android:layout_margin="6dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/feature_icon5"
@@ -139,20 +139,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Video Recording"
-                        android:textSize="10sp"
                         android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_margin="6dp"
                     android:background="@drawable/neumorphic_background"
                     android:elevation="6dp"
-                    android:layout_margin="6dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/feature_icon6"
@@ -166,20 +166,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Flash Blinker"
-                        android:textSize="10sp"
                         android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_margin="6dp"
                     android:background="@drawable/neumorphic_background"
                     android:elevation="6dp"
-                    android:layout_margin="6dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/feature_icon7"
@@ -193,20 +193,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Em. Message"
-                        android:textSize="10sp"
                         android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_margin="6dp"
                     android:background="@drawable/neumorphic_background"
                     android:elevation="6dp"
-                    android:layout_margin="6dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/feature_icon8"
@@ -220,20 +220,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Fake Call"
-                        android:textSize="10sp"
                         android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_margin="6dp"
                     android:background="@drawable/neumorphic_background"
                     android:elevation="6dp"
-                    android:layout_margin="6dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/feature_icon9"
@@ -247,20 +247,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Safe Place"
-                        android:textSize="10sp"
                         android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_margin="6dp"
                     android:background="@drawable/neumorphic_background"
                     android:elevation="6dp"
-                    android:layout_margin="6dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/feature_icon0"
@@ -274,20 +274,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Share Location"
-                        android:textSize="10sp"
                         android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_margin="6dp"
                     android:background="@drawable/neumorphic_background"
                     android:elevation="6dp"
-                    android:layout_margin="6dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/feature_icon11"
@@ -301,20 +301,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Share Location"
-                        android:textSize="10sp"
                         android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_margin="6dp"
                     android:background="@drawable/neumorphic_background"
                     android:elevation="6dp"
-                    android:layout_margin="6dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/feature_icon1"
@@ -328,13 +328,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Share Location"
-                        android:textSize="10sp"
                         android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:textSize="10sp" />
                 </LinearLayout>
-
-
 
 
             </GridLayout>
