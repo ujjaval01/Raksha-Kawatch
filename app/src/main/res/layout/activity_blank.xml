@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".BlankActivity">
+    tools:context=".BlankActivity"
+    android:background="@drawable/bg_blank_img">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/calBtn"

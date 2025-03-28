@@ -14,22 +14,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile Settings"
+            android:text="signup"
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingVertical="8dp" />
 
         <Button
-            android:id="@+id/btnManageProfile"
+            android:id="@+id/btnOpenSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Manage Profile" />
+            android:text="@string/signup" />
 
         <Button
-            android:id="@+id/btnManageGuardians"
+            android:id="@+id/btnOpenLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Manage Guardians" />
+            android:text="@string/login" />
 
         <!-- Security Settings -->
         <TextView
@@ -117,6 +117,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="About and Privacy Policy" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout the App"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingVertical="8dp" />
+
+        <Button
+            android:id="@+id/btnLogoutApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout" />
+
 
     </LinearLayout>
 

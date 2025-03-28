@@ -74,6 +74,7 @@
             app:boxCornerRadiusBottomEnd="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameSignup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
@@ -113,7 +114,7 @@
         </RadioGroup>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailLayout"
+            android:id="@+id/emailSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -168,6 +169,7 @@
             app:boxCornerRadiusBottomEnd="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordSignup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
@@ -190,6 +192,7 @@
             app:boxCornerRadiusBottomEnd="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/conformPasswordSignup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Confirm Password"
@@ -203,6 +206,7 @@
 
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/continueSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -254,21 +258,18 @@
             android:contentDescription="@string/todo">
 
             <ImageView
-                android:id="@+id/facebookBtn"
+                android:id="@+id/facebookBtnSignup"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/icons8_facebook"
                 android:layout_marginEnd="20dp"/>
             <ImageView
-                android:id="@+id/googleBtn"
+                android:id="@+id/googleBtnSignup"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/icons8_google"
                 android:layout_marginStart="20dp"
                 android:contentDescription="@string/todo" />
-
-
-
 
         </LinearLayout>
 
@@ -297,11 +298,7 @@
                 android:textColor="@color/yellow" />
 
         </LinearLayout>
-
-
     </LinearLayout>
-
-
 </ScrollView>
 
 

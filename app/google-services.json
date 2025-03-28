@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "786218235500",
-    "project_id": "rakshakawatch",
-    "storage_bucket": "rakshakawatch.firebasestorage.app"
+    "project_number": "125889699434",
+    "project_id": "raksha-kawatch-64084",
+    "storage_bucket": "raksha-kawatch-64084.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:786218235500:android:4fad6f2d8dd77507ef8a49",
+        "mobilesdk_app_id": "1:125889699434:android:638754e314f91a96507413",
         "android_client_info": {
           "package_name": "com.ui.rakshakawatch"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBcV-yM1DWiR5lBSzUXNmzD78eowg4ma6U"
+          "current_key": "AIzaSyA_pduTnBDE3SD5VYr3tjLit9LNs9MJUsE"
         }
       ],
       "services": {

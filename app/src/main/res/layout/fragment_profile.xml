@@ -49,7 +49,7 @@
                 android:background="@drawable/circle_image"
                 android:backgroundTint="#F8D7E6"
                 android:scaleType="centerCrop"
-                android:src="@drawable/baseline_person_24" />
+                android:src="@drawable/img_vansi2_modified" />
             <ImageView
                 android:id="@+id/setImage"
                 android:layout_width="40dp"

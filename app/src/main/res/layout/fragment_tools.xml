@@ -1,343 +1,341 @@
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="#00F3EFEF">
 
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"> <!-- Center content horizontally -->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="---- Safety Tools ----"
-            android:textStyle="bold"
-            android:textSize="24sp"
-            android:textColor="@color/blue"
-            android:fontFamily="sans-serif-medium"
-            android:paddingBottom="8dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"> <!-- Center content -->
-
-            <GridLayout
-                android:id="@+id/tool_grid"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_neumorphic5"
+            android:padding="16dp">
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:columnCount="3"> <!-- Center GridLayout -->
+                android:text="Emergency Quick Contact"
 
+                android:textSize="28sp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center" />
 
-                <LinearLayout
-                    android:id="@+id/ll1"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="6dp"
-                    android:background="@drawable/neumorphic_background"
-                    android:elevation="6dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/feature_icon2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_menu_mylocation"
-                        app:tint="@color/red" />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:useDefaultMargins="true"
+                android:alignmentMode="alignMargins"
+                android:rowOrderPreserved="false">
 
-                    <TextView
-                        android:id="@+id/feature_name2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Share Location"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
-                </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Papa"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@null"
+                android:background="@drawable/bg_neumorphic4"
+                android:layout_gravity="fill_horizontal"/>
 
-                <LinearLayout
-                    android:id="@+id/ll2"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="6dp"
-                    android:background="@drawable/neumorphic_background"
-                    android:elevation="6dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.Material3.Button.ElevatedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Papa"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/bg_neumorphic4"
+                    android:layout_gravity="fill_horizontal"/>
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.Material3.Button.ElevatedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Papa"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/bg_neumorphic4"
+                    android:layout_gravity="fill_horizontal"/>
 
-                    <ImageView
-                        android:id="@+id/feature_icon3"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/baseline_contact_phone_24"
-                        app:tint="@color/red" />
-
-                    <TextView
-                        android:id="@+id/feature_name3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Em. Contact"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_row="0"
-                    android:layout_margin="6dp"
-                    android:background="@drawable/neumorphic_background"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/feature_icon4"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/baseline_add_alert_24"
-                        app:tint="@color/red" />
-
-                    <TextView
-                        android:id="@+id/feature_name4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Loud Siren"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="6dp"
-                    android:background="@drawable/neumorphic_background"
-                    android:elevation="6dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/feature_icon5"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/baseline_videocam_24"
-                        app:tint="@color/red" />
-
-                    <TextView
-                        android:id="@+id/feature_name5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Video Recording"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="6dp"
-                    android:background="@drawable/neumorphic_background"
-                    android:elevation="6dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/feature_icon6"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/baseline_flash_auto_24"
-                        app:tint="@color/red" />
-
-                    <TextView
-                        android:id="@+id/feature_name6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Flash Blinker"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="6dp"
-                    android:background="@drawable/neumorphic_background"
-                    android:elevation="6dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/feature_icon7"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/baseline_message_24"
-                        app:tint="@color/red" />
-
-                    <TextView
-                        android:id="@+id/feature_name7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Em. Message"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="6dp"
-                    android:background="@drawable/neumorphic_background"
-                    android:elevation="6dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/feature_icon8"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/baseline_phone_24"
-                        app:tint="@color/red" />
-
-                    <TextView
-                        android:id="@+id/feature_name8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Fake Call"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="6dp"
-                    android:background="@drawable/neumorphic_background"
-                    android:elevation="6dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/feature_icon9"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/baseline_place_24"
-                        app:tint="@color/red" />
-
-                    <TextView
-                        android:id="@+id/feature_name9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Safe Place"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="6dp"
-                    android:background="@drawable/neumorphic_background"
-                    android:elevation="6dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/feature_icon0"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_menu_mylocation"
-                        app:tint="@color/red" />
-
-                    <TextView
-                        android:id="@+id/feature_name0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Share Location"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="6dp"
-                    android:background="@drawable/neumorphic_background"
-                    android:elevation="6dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/feature_icon11"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_menu_mylocation"
-                        app:tint="@color/red" />
-
-                    <TextView
-                        android:id="@+id/feature_name11"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Share Location"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="6dp"
-                    android:background="@drawable/neumorphic_background"
-                    android:elevation="6dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/feature_icon1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_menu_mylocation"
-                        app:tint="@color/red" />
-
-                    <TextView
-                        android:id="@+id/feature_name1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Share Location"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.Material3.Button.ElevatedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Add +"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/bg_neumorphic4"
+                    android:layout_gravity="fill_horizontal"/>
 
             </GridLayout>
+    </ScrollView>
+</LinearLayout>
 
-        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/bg_neumorphic5"
+        android:padding="15dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quick Safety Tools"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:background="@drawable/bg_neumorphic5"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+
+        <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:useDefaultMargins="true"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn1"
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Police \n112"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_neumorphic4"
+            android:layout_gravity="fill_horizontal"/>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Police \n112"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_neumorphic4"
+            android:layout_gravity="fill_horizontal"/>
+
+        <com.google.android.material.button.MaterialButton
+             
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Police \n112"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_neumorphic4"
+            android:layout_gravity="fill_horizontal"/>
+
+        <com.google.android.material.button.MaterialButton
+             
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Police \n112"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_neumorphic4"
+            android:layout_gravity="fill_horizontal"/>
+
+        <com.google.android.material.button.MaterialButton
+             
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Police \n112"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_neumorphic4"
+            android:layout_gravity="fill_horizontal"/>
+
+        <com.google.android.material.button.MaterialButton
+             
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Police \n112"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_neumorphic4"
+            android:layout_gravity="fill_horizontal"/>
+
+        <com.google.android.material.button.MaterialButton
+             
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Police \n112"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_neumorphic4"
+            android:layout_gravity="fill_horizontal"/>
+
+        <com.google.android.material.button.MaterialButton
+             
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Police \n112"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_neumorphic4"
+            android:layout_gravity="fill_horizontal"/>
+
+        <com.google.android.material.button.MaterialButton
+             
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Police \n112"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_neumorphic4"
+            android:layout_gravity="fill_horizontal"/>
+
+        <com.google.android.material.button.MaterialButton
+             
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Police \n112"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_neumorphic4"
+            android:layout_gravity="fill_horizontal"/>
+
+        <com.google.android.material.button.MaterialButton
+             
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Police \n112"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_neumorphic4"
+            android:layout_gravity="fill_horizontal"/>
+
+            <com.google.android.material.button.MaterialButton
+
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Police \n112"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@null"
+                android:background="@drawable/bg_neumorphic4"
+                android:layout_gravity="fill_horizontal"/>
+
+            <com.google.android.material.button.MaterialButton
+
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Police \n112"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@null"
+                android:background="@drawable/bg_neumorphic4"
+                android:layout_gravity="fill_horizontal"/>
+            <com.google.android.material.button.MaterialButton
+
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Police \n112"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@null"
+                android:background="@drawable/bg_neumorphic4"
+                android:layout_gravity="fill_horizontal"/>
+
+            <com.google.android.material.button.MaterialButton
+
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Police \n112"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@null"
+                android:background="@drawable/bg_neumorphic4"
+                android:layout_gravity="fill_horizontal"/>
+
+    </GridLayout>
+        </ScrollView>
     </LinearLayout>
 
-</ScrollView>
+
+
+</LinearLayout>

@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.ui.rakshakawatch" />
-                  <option name="mobileSdkAppId" value="1:786218235500:android:4fad6f2d8dd77507ef8a49" />
-                  <option name="projectId" value="rakshakawatch" />
-                  <option name="projectNumber" value="786218235500" />
+                  <option name="mobileSdkAppId" value="1:125889699434:android:638754e314f91a96507413" />
+                  <option name="projectId" value="raksha-kawatch-64084" />
+                  <option name="projectNumber" value="125889699434" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

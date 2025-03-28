@@ -1,6 +1,6 @@
 plugins {
-    alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.android.application")
     id("com.google.gms.google-services")
 }
 
@@ -14,10 +14,6 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
-        android.buildFeatures.buildConfig = true
-        buildConfigField("String", "API_KEY", "\"${System.getenv("API_KEY") ?: project.findProperty("API_KEY")}\"")
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -42,47 +38,42 @@ android {
 }
 
 dependencies {
-    // Firebase dependencies
-    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
-    implementation("com.google.firebase:firebase-firestore-ktx:24.10.1")
-    implementation("com.google.firebase:firebase-database-ktx:20.3.0")
+    dependencies {
+        // Firebase dependencies (Latest versions)
+        implementation(platform("com.google.firebase:firebase-bom:32.8.0")) // Update BOM
+        implementation("com.google.firebase:firebase-analytics")
+        implementation("com.google.firebase:firebase-auth-ktx:22.3.0") // Latest version
 
-    // AndroidX dependencies
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.annotation)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.play.services.maps)
-    implementation(libs.androidx.preference.ktx)
+        // AndroidX dependencies (Check if these resolve correctly)
+        implementation("androidx.core:core-ktx:1.12.0")
+        implementation("androidx.appcompat:appcompat:1.6.1")
+        implementation("com.google.android.material:material:1.11.0")
+        implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+        implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+        implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
 
-    // Network & JSON Handling
-    implementation("com.android.volley:volley:1.2.1")
-    implementation("org.json:json:20210307")
-    implementation("com.squareup.okhttp3:okhttp:4.9.3")
+        // Google Maps & Location
+        implementation("com.google.android.gms:play-services-maps:18.2.0") // Updated
+        implementation("com.google.android.gms:play-services-location:21.2.0") // Updated
 
-    // Animation Libraries
-    implementation("com.airbnb.android:lottie:3.4.0")
-    implementation("androidx.interpolator:interpolator:1.0.0")
+        // Networking
+        implementation("com.android.volley:volley:1.2.1")
+        implementation("org.json:json:20231013") // Newest version
+        implementation("com.squareup.okhttp3:okhttp:4.12.0") // Latest version
 
-    // googleMap for Maps
-//    implementation("com.mapbox.maps:android:10.13.0")
-    implementation("com.google.android.gms:play-services-maps:18.0.0")
-    implementation("com.google.android.gms:play-services-location:21.0.1")
+        // Animation Libraries
+        implementation("com.airbnb.android:lottie:6.3.0") // Latest Lottie version
 
+        // Bottom Navigation Bar
+        implementation("io.github.zagori:bottomnavbar:1.0.3") // Keep if working fine
 
-    // OSMDroid (If you are still using this, otherwise remove)
-    implementation("org.osmdroid:osmdroid-android:6.1.11")
+        // OSMDroid
+        implementation("org.osmdroid:osmdroid-android:6.1.16") // Latest update
 
-    // Testing Dependencies
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
-    //bottom bar with floating action
-    implementation( "io.github.zagori:bottomnavbar:1.0.3")
+        // Testing
+        testImplementation("junit:junit:4.13.2")
+        androidTestImplementation("androidx.test.ext:junit:1.1.5")
+        androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    }
 
 }

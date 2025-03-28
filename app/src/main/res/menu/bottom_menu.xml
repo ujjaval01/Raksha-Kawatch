@@ -11,7 +11,7 @@
         android:icon="@drawable/baseline_shopping_cart_24"/>
     <item
         android:id="@+id/bottom_map"
-        android:icon="@drawable/baseline_map_icon_24"
+        android:icon="@drawable/img_location"
         android:title="Map"
         android:enabled="true"/>
     <item

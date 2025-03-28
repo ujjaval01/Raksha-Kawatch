@@ -17,9 +17,11 @@ lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
 googleServices = "4.4.2"
 firebaseAuth = "23.2.0"
+materialVersion = "1.9.0"
 playServicesMaps = "19.1.0"
 volley = "1.2.1"
 preferenceKtx = "1.2.1"
+firebaseAuthKtx = "23.2.0"
 
 [libraries]
 android-v1090 = { module = "com.mapbox.maps:android", version.ref = "android" }
@@ -38,9 +40,11 @@ androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecy
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+material-v190 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
 volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
 androidx-preference-ktx = { group = "androidx.preference", name = "preference-ktx", version.ref = "preferenceKtx" }
+firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

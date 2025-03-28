@@ -118,7 +118,7 @@
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@mipmap/app_logo"
+                        android:src="@drawable/img_app_logo"
                         android:scaleType="centerCrop"
                         android:background="@drawable/circle_background"/>
 

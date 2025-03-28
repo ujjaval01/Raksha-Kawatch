@@ -17,9 +17,7 @@
     <color name="red">#FF0000</color>
 
     <color name="bottom_nav_color">#FF6200EE</color>
-
-
-
+    <color name="light_white">#F1EEEE</color>
 
 
 </resources>

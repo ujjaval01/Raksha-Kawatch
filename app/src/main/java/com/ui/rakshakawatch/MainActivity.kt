@@ -3,6 +3,7 @@ package com.ui.rakshakawatch
 import FragmentTools
 import HomeFragment
 import MapFragment
+import SettingFragment
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
@@ -27,7 +28,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.ui.rakshakawatch.databinding.ActivityMainBinding
 import com.ui.rakshakawatch.fragments.ChatbotFragment
-import com.ui.rakshakawatch.fragments.SettingPrivacyFragment
 import com.zagori.bottomnavbar.BottomNavBar
 
 class MainActivity : AppCompatActivity(), LocationListener, OnMapReadyCallback,
@@ -57,8 +57,6 @@ class MainActivity : AppCompatActivity(), LocationListener, OnMapReadyCallback,
 
         binding.bottomNavigation.background = null
         binding.bottomNavigation.setBottomNavigationListener(this)
-
-
         if (checkLocationPermission()) {
             fetchLocation()
         } else {
@@ -89,7 +87,6 @@ class MainActivity : AppCompatActivity(), LocationListener, OnMapReadyCallback,
             fetchLocation()
         }
     }
-
     private fun fetchLocation() {
         if (checkLocationPermission()) {
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
@@ -148,7 +145,7 @@ class MainActivity : AppCompatActivity(), LocationListener, OnMapReadyCallback,
             }
             R.id.bottom_chatbot -> openFragment(ChatbotFragment())
             R.id.bottom_tools -> openFragment(FragmentTools())
-            R.id.bottom_setting -> openFragment(SettingPrivacyFragment())
+            R.id.bottom_setting -> openFragment(SettingFragment())
             R.id.bottom_map -> {
                 if (checkLocationPermission()) {
                     openFragment(MapFragment())

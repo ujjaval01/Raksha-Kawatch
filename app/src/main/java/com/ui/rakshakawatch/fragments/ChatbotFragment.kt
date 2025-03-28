@@ -135,7 +135,7 @@ class ChatbotFragment : Fragment() {
             params.gravity = Gravity.END
             messageView.layoutParams = params
         } else {
-            messageView.setBackgroundResource(R.drawable.ai_message_bg)
+            messageView.setBackgroundResource(R.drawable.bg_ai_message)
             val params = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT

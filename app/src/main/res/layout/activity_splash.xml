@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/splash_bg"
+    android:background="@drawable/bg_splash"
     android:id="@+id/main"
     tools:context=".SplashActivity">
 
@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="220dp"
         android:layout_marginTop="180dp"
-        android:src="@mipmap/app_logo"/>
+        android:src="@drawable/img_app_logo"/>
     <TextView
         android:id="@+id/appName"
         android:layout_width="wrap_content"

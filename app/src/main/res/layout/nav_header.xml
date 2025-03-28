@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:paddingTop="8dp"
-        android:src="@mipmap/app_logo"
+        android:src="@drawable/img_app_logo"
         android:contentDescription="@string/todo" />
     <TextView
         android:layout_width="wrap_content"

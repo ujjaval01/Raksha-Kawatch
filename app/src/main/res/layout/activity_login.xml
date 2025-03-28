@@ -93,6 +93,7 @@
         app:boxCornerRadiusBottomEnd="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -139,6 +140,7 @@
         app:boxCornerRadiusBottomEnd="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
@@ -161,6 +163,7 @@
         android:textSize="20sp" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
