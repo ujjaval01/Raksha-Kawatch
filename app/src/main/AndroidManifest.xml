@@ -9,6 +9,9 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
+<!-- for android 10+ users-->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
 
 
     <uses-feature
