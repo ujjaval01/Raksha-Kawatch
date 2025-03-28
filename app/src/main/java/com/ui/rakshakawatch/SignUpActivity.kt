@@ -28,8 +28,7 @@ class SignUpActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         binding.continueSignup.setOnClickListener {
             val name = binding.nameSignup.text.toString()
-            val phone = binding.phoneLayout.editText?.text.toString()
-            val email = binding.emailSignup.editText?.text.toString()
+            val email = binding.emailSignup.text.toString()
             val password = binding.passwordSignup.text.toString()
             val conformPassword = binding.conformPasswordSignup.text.toString()
 
@@ -65,7 +64,6 @@ class SignUpActivity : AppCompatActivity() {
         val phoneLayout = findViewById<TextInputLayout>(R.id.phoneLayout)
         val googleBtn = findViewById<ImageView>(R.id.googleBtnSignup)
         val facebookBtn = findViewById<ImageView>(R.id.facebookBtnSignup)
-
          ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -98,8 +96,5 @@ class SignUpActivity : AppCompatActivity() {
                 phoneLayout.visibility = View.VISIBLE
             }
         }
-
-
-
     }
 }

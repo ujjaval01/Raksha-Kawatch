@@ -82,9 +82,9 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/emailLayout"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="10dp"
         app:boxCornerRadiusTopStart="10dp"
@@ -238,7 +238,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
-
         android:gravity="center">
 
         <TextView
