@@ -26,7 +26,14 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
+        //creating instance of firebase
         firebaseAuth = FirebaseAuth.getInstance()
+
+        //  store the login status when the user logs in
+        val sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("isLoggedIn", true)
+        editor.apply()
 
         binding.loginBtn.setOnClickListener{
             val email = binding.emailLogin.text.toString()

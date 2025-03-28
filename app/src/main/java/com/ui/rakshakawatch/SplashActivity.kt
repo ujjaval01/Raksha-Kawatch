@@ -16,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_splash)
 
-        // Ensure findViewById is called after setContentView
+        // declared id's
         val textView = findViewById<TextView>(R.id.runningTxt)
         textView.isSelected = true
 
@@ -28,9 +28,18 @@ class SplashActivity : AppCompatActivity() {
 
         // Use Handler with Looper.getMainLooper() to avoid deprecation
         Handler(Looper.getMainLooper()).postDelayed({
-            val iSplash = Intent(this@SplashActivity, LoginActivity::class.java)
-            startActivity(iSplash)
-            finish()
-        }, 2500)
+            val sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE)
+            val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+            if (isLoggedIn) {
+                // If logged in, open MainActivity
+                startActivity(Intent(this, MainActivity::class.java))
+            } else {
+                // If not logged in, open LoginActivity
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
+            finish() // Close SplashActivity
+        }, 2500) // 2 seconds delay
+
     }
 }

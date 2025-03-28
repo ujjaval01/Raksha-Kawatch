@@ -6,6 +6,7 @@ import MapFragment
 import SettingFragment
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity(), LocationListener, OnMapReadyCallback,
         }
     }
 
+
     private fun checkLocationPermission(): Boolean {
         return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
@@ -100,7 +102,7 @@ class MainActivity : AppCompatActivity(), LocationListener, OnMapReadyCallback,
 
     private fun saveLocationToSharedPrefs(location: Location) {
         val currentLocation = "${location.latitude}, ${location.longitude}"
-        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("currentLocation", currentLocation)
         editor.apply()

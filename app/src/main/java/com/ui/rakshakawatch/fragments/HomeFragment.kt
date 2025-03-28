@@ -13,7 +13,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -47,7 +46,7 @@ class HomeFragment : Fragment() {
         val mapLocation = view.findViewById<LinearLayout>(R.id.mapLocation)
 //        val btnPolice = view.findViewById<Button>(R.id.btnPolice)
         val btnWomenSafety = view.findViewById<Button>(R.id.btnWomenSafety)
-        val profile = view.findViewById<ImageView>(R.id.profile)
+        val profile = view.findViewById<LinearLayout>(R.id.profile)
         currentLocation = view.findViewById(R.id.currentLocation)
 
         fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,8 +59,6 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-
-
 
 
         // Fetch current location
