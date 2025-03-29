@@ -3,6 +3,7 @@ package com.ui.rakshakawatch
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioGroup
@@ -56,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
             val signupIntent = Intent(this, SignUpActivity::class.java)
         }
 
-        val backArrow = findViewById<ImageView>(R.id.backArrow)
+        val bounceText =findViewById<TextView>(R.id.bounceText)
         val goSignUp = findViewById<LinearLayout>(R.id.goSignUp)
         val radioGroup1 = findViewById<RadioGroup>(R.id.radioGroup)
         val emailLayout1 = findViewById<TextInputLayout>(R.id.emailLayout)
@@ -72,6 +73,8 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce)
+        bounceText.startAnimation(bounceAnimation)
         googleBtn.setOnClickListener {
             Toast.makeText(this, "This feature is on maintenance", Toast.LENGTH_SHORT).show()
         }
@@ -81,11 +84,6 @@ class LoginActivity : AppCompatActivity() {
 
         forgotPassword.setOnClickListener{
             val intent = Intent(this, ForgotPasswordActivity::class.java)
-            startActivity(intent)
-        }
-
-        backArrow.setOnClickListener {
-            val intent = Intent(this, BlankActivity::class.java)
             startActivity(intent)
         }
 

@@ -1,12 +1,9 @@
 package com.ui.rakshakawatch
 
 import FragmentTools
-import HomeFragment
 import MapFragment
 import SettingFragment
 import android.Manifest
-import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -29,7 +26,9 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.ui.rakshakawatch.databinding.ActivityMainBinding
 import com.ui.rakshakawatch.fragments.ChatbotFragment
+import com.ui.rakshakawatch.fragments.HomeFragment
 import com.zagori.bottomnavbar.BottomNavBar
+
 
 class MainActivity : AppCompatActivity(), LocationListener, OnMapReadyCallback,
     BottomNavBar.OnBottomNavigationListener {

@@ -43,6 +43,7 @@
         android:theme="@style/Theme.RakshaKawatch"
         tools:targetApi="31">
 
+<!--        google map api key-->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCKif9jkaJPbNOMOOpHKdDBQ3NkQpP3P-8"/>

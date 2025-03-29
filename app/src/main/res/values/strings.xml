@@ -41,6 +41,7 @@
     <string name="press_the_button_to_send_sos">Press the button to send SOS</string>
     <string name="quick_shortcuts">Quick Shortcuts</string>
     <string name="current_location">Current Location</string>
+    <string name="back_button">Back Button</string>
 
 
 </resources>

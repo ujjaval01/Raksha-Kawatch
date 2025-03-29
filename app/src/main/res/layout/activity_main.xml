@@ -11,7 +11,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <FrameLayout
             android:id="@+id/fragment_container"
@@ -32,11 +33,11 @@
             app:bn_curve_margin="10dp"
             app:bn_curve_rounded_corner_radius="20dp"
             app:bn_curve_vertical_offset="0dp"
-            app:bn_fab_background_color="@color/teal_200"
+            app:bn_fab_background_color="@color/lavender"
             app:bn_fab_icon_color="@color/black"
             app:bn_fab_menu_index="2"
             app:bn_fab_size="normal"
-            app:bn_item_color="@drawable/bottom_nav_item_state"
+            app:bn_item_color="@color/black"
             app:bn_menu="@menu/bottom_menu" />
 
     </RelativeLayout>

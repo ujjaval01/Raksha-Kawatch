@@ -1,18 +1,23 @@
+package com.ui.rakshakawatch.fragments
 
+import MapFragment
 import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -21,8 +26,9 @@ import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.button.MaterialButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.ui.rakshakawatch.R
-import com.ui.rakshakawatch.fragments.ProfileFragment
 import java.io.IOException
 import java.util.Locale
 
@@ -32,12 +38,22 @@ class HomeFragment : Fragment() {
     private val LOCATION_PERMISSION_REQUEST = 1001
     private lateinit var currentLocation: TextView
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+    private lateinit var homeProfileImage: ImageView // Profile Image in HomeFragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        homeProfileImage = view.findViewById(R.id.homeProfileImage)
+        firebaseAuth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
+        fetchProfileImage() // Fetch and display profile image
+
 
         // Initialize location provider
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
@@ -59,8 +75,6 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-
-
         // Fetch current location
         getUserLocation()
 
@@ -85,6 +99,31 @@ class HomeFragment : Fragment() {
         }
         return view
     }
+
+    override fun onResume() {
+        super.onResume()
+        fetchProfileImage() // Refresh profile image when HomeFragment is opened
+    }
+
+    private fun fetchProfileImage() {
+        val uid = firebaseAuth.currentUser?.uid ?: return
+
+        db.collection("users").document(uid).get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val base64String = document.getString("profilePicBase64")
+                    if (!base64String.isNullOrEmpty()) {
+                        val imageBytes = Base64.decode(base64String, Base64.DEFAULT)
+                        val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+                        homeProfileImage.setImageBitmap(bitmap) // Set the image
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
 
     private fun getUserLocation() {
         if (ActivityCompat.checkSelfPermission(
