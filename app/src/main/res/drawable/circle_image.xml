@@ -4,7 +4,7 @@
     <!-- Shadow Layer -->
     <item>
         <shape android:shape="oval">
-            <solid android:color="#B0BEC5"/>
+            <solid android:color="#569BBD"/>
         </shape>
     </item>
 

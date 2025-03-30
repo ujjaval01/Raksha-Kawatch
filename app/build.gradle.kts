@@ -78,6 +78,19 @@ dependencies {
         androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 //      picasso for profile
         implementation("com.squareup.picasso:picasso:2.8")
+        // for circle image or background glide
+        implementation("com.github.bumptech.glide:glide:4.16.0")
+        annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
+        // loader annimation
+
+
+
+
+
+
+
+
     }
 
 }

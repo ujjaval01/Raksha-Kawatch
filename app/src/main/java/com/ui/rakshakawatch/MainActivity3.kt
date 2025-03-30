@@ -17,12 +17,12 @@ class MainActivity3 : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val button = findViewById<MaterialButton>(R.id.elevatedButton)
-        button.setOnClickListener {
-            it.animate().scaleX(1.1f).scaleY(1.1f).setDuration(100).withEndAction {
-                it.animate().scaleX(1f).scaleY(1f).setDuration(100)
-            }
-        }
+//        val button = findViewById<MaterialButton>(R.id.elevatedButton)
+//        button.setOnClickListener {
+//            it.animate().scaleX(1.1f).scaleY(1.1f).setDuration(100).withEndAction {
+//                it.animate().scaleX(1f).scaleY(1f).setDuration(100)
+//            }
+//        }
 
     }
 }

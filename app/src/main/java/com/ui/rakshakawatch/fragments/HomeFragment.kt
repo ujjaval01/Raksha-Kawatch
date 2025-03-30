@@ -2,6 +2,7 @@ package com.ui.rakshakawatch.fragments
 
 import MapFragment
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -23,9 +24,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.ui.rakshakawatch.R
@@ -41,6 +42,7 @@ class HomeFragment : Fragment() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private lateinit var homeProfileImage: ImageView // Profile Image in HomeFragment
+    private lateinit var homeProfileText: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,11 +50,14 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+
         homeProfileImage = view.findViewById(R.id.homeProfileImage)
+        homeProfileText = view.findViewById(R.id.homeProfileText)
         firebaseAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
         fetchProfileImage() // Fetch and display profile image
+        fetchProfileText()  // Fetch and display profile text
 
 
         // Initialize location provider
@@ -60,24 +65,22 @@ class HomeFragment : Fragment() {
 
         // Find Views
         val mapLocation = view.findViewById<LinearLayout>(R.id.mapLocation)
-//        val btnPolice = view.findViewById<Button>(R.id.btnPolice)
+//      val btnPolice = view.findViewById<Button>(R.id.btnPolice)
         val btnWomenSafety = view.findViewById<Button>(R.id.btnWomenSafety)
         val profile = view.findViewById<LinearLayout>(R.id.profile)
         currentLocation = view.findViewById(R.id.currentLocation)
 
         fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
-
-            val button = view.findViewById<MaterialButton>(R.id.elevatedButton)
-            button.setOnClickListener {
-                it.animate().scaleX(1.1f).scaleY(1.1f).setDuration(100).withEndAction {
-                    it.animate().scaleX(1f).scaleY(1f).setDuration(100)
-                }
-            }
+//            val button = view.findViewById<MaterialButton>(R.id.elevatedButton)
+//            button.setOnClickListener {
+//                it.animate().scaleX(1.1f).scaleY(1.1f).setDuration(100).withEndAction {
+//                    it.animate().scaleX(1f).scaleY(1f).setDuration(100)
+//                }
+//            }
         }
         // Fetch current location
         getUserLocation()
-
 
         profile.setOnClickListener {
             val profileFragment = ProfileFragment()
@@ -100,6 +103,21 @@ class HomeFragment : Fragment() {
         return view
     }
 
+    @SuppressLint("SetTextI18n")
+    private fun fetchProfileText() {
+        val uid = firebaseAuth.currentUser?.uid ?: return
+
+        db.collection("users").document(uid).get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val userName = document.getString("name") ?: "User"
+                    homeProfileText.text = userName // Display username
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
     override fun onResume() {
         super.onResume()
         fetchProfileImage() // Refresh profile image when HomeFragment is opened
@@ -115,7 +133,12 @@ class HomeFragment : Fragment() {
                     if (!base64String.isNullOrEmpty()) {
                         val imageBytes = Base64.decode(base64String, Base64.DEFAULT)
                         val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-                        homeProfileImage.setImageBitmap(bitmap) // Set the image
+
+                        // Use Glide to set circular image
+                        Glide.with(this)
+                            .load(bitmap) // Load the actual bitmap
+                            .circleCrop() // Apply circle transformation
+                            .into(homeProfileImage) // Set image into ImageView
                     }
                 }
             }
@@ -123,6 +146,8 @@ class HomeFragment : Fragment() {
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
+
 
 
     private fun getUserLocation() {

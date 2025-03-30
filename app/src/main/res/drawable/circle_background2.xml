@@ -1,4 +1,6 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/gray"/>
-    <corners android:radius="1000dp"/>
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#F8D7E6"/> <!-- Background Color -->
+    <stroke android:width="4dp" android:color="@color/white"/> <!-- Optional Border -->
 </shape>

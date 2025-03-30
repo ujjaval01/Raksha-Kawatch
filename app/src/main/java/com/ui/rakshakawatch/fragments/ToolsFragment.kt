@@ -3,7 +3,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.ui.rakshakawatch.R
@@ -17,11 +16,11 @@ class FragmentTools : Fragment() {
         val view = inflater.inflate(R.layout.fragment_tools, container, false)
 
         // Find LinearLayouts by their IDs
-        val ll1 = view.findViewById<Button>(R.id.btn1)
+//        val ll1 = view.findViewById<Button>(R.id.btn1)
 
 
         // Set Click Listeners for each tool
-        ll1.setOnClickListener { showToast("Share Location clicked") }
+//        ll1.setOnClickListener { showToast("Share Location clicked") }
 
 
         return view
