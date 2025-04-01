@@ -67,7 +67,7 @@
                 android:id="@+id/homeProfileText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/vanshika_saini"
+                android:hint="@string/username"
                 android:textColor="@android:color/holo_red_dark"
                 android:textSize="16sp"/>
             </LinearLayout>
@@ -96,6 +96,8 @@
                     android:text="Safe Location"
                     android:textStyle="bold"
                     android:textColor="@color/black"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
                     android:textSize="14sp"/>
 
                 <TextView
@@ -146,7 +148,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/otp_box2"
+        android:background="@drawable/rounded_edittext"
         android:layout_marginBottom="-3dp"
         android:orientation="vertical">
         <TextView
@@ -181,7 +183,7 @@
                     android:rowOrderPreserved="false">
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnWomenSafety"
+                        android:id="@+id/btnPolice"
                         style="@style/Widget.Material3.Button.ElevatedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -194,6 +196,7 @@
                         android:layout_gravity="fill_horizontal"/>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnWomenHelp"
                         style="@style/Widget.Material3.Button.ElevatedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -206,6 +209,7 @@
                         android:layout_gravity="fill_horizontal"/>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnFire"
                         style="@style/Widget.Material3.Button.ElevatedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -218,6 +222,7 @@
                         android:layout_gravity="fill_horizontal"/>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAmbulance"
                         style="@style/Widget.Material3.Button.ElevatedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -229,6 +234,7 @@
                         android:background="@drawable/bg_neumorphic4"
                         android:layout_gravity="fill_horizontal"/>
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRailway"
                         style="@style/Widget.Material3.Button.ElevatedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -241,6 +247,7 @@
                         android:layout_gravity="fill_horizontal"/>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRoadAcc"
                         style="@style/Widget.Material3.Button.ElevatedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -253,6 +260,7 @@
                         android:layout_gravity="fill_horizontal"/>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnChildHelp"
                         style="@style/Widget.Material3.Button.ElevatedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -265,6 +273,7 @@
                         android:layout_gravity="fill_horizontal"/>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCyberCrime"
                         style="@style/Widget.Material3.Button.ElevatedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -277,6 +286,7 @@
                         android:layout_gravity="fill_horizontal"/>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnTrainAcc"
                         style="@style/Widget.Material3.Button.ElevatedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -289,6 +299,7 @@
                         android:layout_gravity="fill_horizontal"/>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDemo2"
                         style="@style/Widget.Material3.Button.ElevatedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -301,6 +312,7 @@
                         android:layout_gravity="fill_horizontal"/>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDemo3"
                         style="@style/Widget.Material3.Button.ElevatedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -313,6 +325,7 @@
                         android:layout_gravity="fill_horizontal"/>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDemo4"
                         style="@style/Widget.Material3.Button.ElevatedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

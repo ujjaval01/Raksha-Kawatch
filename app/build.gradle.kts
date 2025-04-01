@@ -45,6 +45,7 @@ dependencies {
         implementation(platform("com.google.firebase:firebase-bom:32.8.0")) // Update BOM
         implementation("com.google.firebase:firebase-analytics")
         implementation("com.google.firebase:firebase-auth-ktx:22.3.0") // Latest version
+        implementation("com.google.android.gms:play-services-auth:20.7.0")
 
         // AndroidX dependencies (Check if these resolve correctly)
         implementation("androidx.core:core-ktx:1.12.0")
@@ -82,7 +83,7 @@ dependencies {
         implementation("com.github.bumptech.glide:glide:4.16.0")
         annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 
-        // loader annimation
+        implementation("com.google.android.flexbox:flexbox:3.0.0")
 
 
 

@@ -37,13 +37,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@drawable/bg_neumorphic"
+        android:background="@drawable/rounded_edittext"
         android:elevation="4dp"
         android:padding="8dp"
         android:layout_margin="10dp"
         android:layout_gravity="top"
-        android:id="@+id/searchBar"
-        android:layout_alignParentTop="true">
+        android:id="@+id/searchBar">
 
         <EditText
             android:id="@+id/searchLocation"

@@ -65,20 +65,24 @@ class HomeFragment : Fragment() {
 
         // Find Views
         val mapLocation = view.findViewById<LinearLayout>(R.id.mapLocation)
-//      val btnPolice = view.findViewById<Button>(R.id.btnPolice)
-        val btnWomenSafety = view.findViewById<Button>(R.id.btnWomenSafety)
+
+        // call btn
+        val btnPolice = view.findViewById<Button>(R.id.btnPolice)
+        val btnWomenHelp = view.findViewById<Button>(R.id.btnWomenHelp)
+        val btnFire = view.findViewById<Button>(R.id.btnFire)
+        val btnAmbulance = view.findViewById<Button>(R.id.btnAmbulance)
+        val btnRailway = view.findViewById<Button>(R.id.btnRailway)
+        val btnRoadAcc = view.findViewById<Button>(R.id.btnRoadAcc)
+        val btnChildHelp = view.findViewById<Button>(R.id.btnChildHelp)
+        val btnCyberCrime = view.findViewById<Button>(R.id.btnCyberCrime)
+        val btnTrainAcc = view.findViewById<Button>(R.id.btnTrainAcc)
+        val btnDemo2 = view.findViewById<Button>(R.id.btnDemo2)
+        val btnDemo3 = view.findViewById<Button>(R.id.btnDemo3)
+        val btnDemo4 = view.findViewById<Button>(R.id.btnDemo4)
+
         val profile = view.findViewById<LinearLayout>(R.id.profile)
         currentLocation = view.findViewById(R.id.currentLocation)
 
-        fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-//            val button = view.findViewById<MaterialButton>(R.id.elevatedButton)
-//            button.setOnClickListener {
-//                it.animate().scaleX(1.1f).scaleY(1.1f).setDuration(100).withEndAction {
-//                    it.animate().scaleX(1f).scaleY(1f).setDuration(100)
-//                }
-//            }
-        }
         // Fetch current location
         getUserLocation()
 
@@ -91,7 +95,18 @@ class HomeFragment : Fragment() {
         }
 
 
-        btnWomenSafety.setOnClickListener { makeCall("1090") }
+        btnPolice.setOnClickListener { makeCall("112") }
+        btnWomenHelp.setOnClickListener { makeCall("1091") }
+        btnFire.setOnClickListener { makeCall("101") }
+        btnAmbulance.setOnClickListener { makeCall("108") }
+        btnRailway.setOnClickListener { makeCall("139") }
+        btnRoadAcc.setOnClickListener { makeCall("1073") }
+        btnChildHelp.setOnClickListener { makeCall("1098") }
+        btnCyberCrime.setOnClickListener { makeCall("1930") }
+        btnTrainAcc.setOnClickListener { makeCall("1072") }
+        btnDemo2.setOnClickListener { makeCall("9690020293") }
+        btnDemo3.setOnClickListener { makeCall("9690020293") }
+        btnDemo4.setOnClickListener { makeCall("9690020293") }
 
         mapLocation.setOnClickListener {
             val mapFragment = MapFragment()

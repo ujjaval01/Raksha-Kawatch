@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,17 +16,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             android:weightSum="3">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
-                app:cardElevation="10dp"
-                app:cardCornerRadius="15dp">
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -37,31 +36,31 @@
                         android:id="@+id/card1"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginTop="20dp"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/img_location"
-                        android:contentDescription="@string/todo" />
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/img_location" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Location"
-                        android:textSize="18sp"
-                        android:textColor="@color/lavender"
-                        android:fontFamily="@font/poppins_semibold"
                         android:layout_below="@+id/card1"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Location"
+                        android:textColor="@color/lavender"
+                        android:textSize="18sp" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
-                app:cardElevation="10dp"
-                app:cardCornerRadius="15dp">
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -71,31 +70,31 @@
                         android:id="@+id/card2"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginTop="20dp"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/img_location"
-                        android:contentDescription="@string/todo" />
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/img_location" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Location"
-                        android:textSize="18sp"
-                        android:textColor="@color/lavender"
-                        android:fontFamily="@font/poppins_semibold"
                         android:layout_below="@+id/card2"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Location"
+                        android:textColor="@color/lavender"
+                        android:textSize="18sp" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
-                app:cardElevation="10dp"
-                app:cardCornerRadius="15dp">
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -105,21 +104,21 @@
                         android:id="@+id/card3"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginTop="20dp"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/img_location"
-                        android:contentDescription="@string/todo" />
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/img_location" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Location"
-                        android:textSize="18sp"
-                        android:textColor="@color/lavender"
-                        android:fontFamily="@font/poppins_semibold"
                         android:layout_below="@+id/card3"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Location"
+                        android:textColor="@color/lavender"
+                        android:textSize="18sp" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -129,17 +128,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             android:weightSum="3">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
-                app:cardElevation="10dp"
-                app:cardCornerRadius="15dp">
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -149,31 +148,31 @@
                         android:id="@+id/card4"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginTop="20dp"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/img_location"
-                        android:contentDescription="@string/todo" />
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/img_location" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Location"
-                        android:textSize="18sp"
-                        android:textColor="@color/lavender"
-                        android:fontFamily="@font/poppins_semibold"
                         android:layout_below="@+id/card4"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Location"
+                        android:textColor="@color/lavender"
+                        android:textSize="18sp" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
-                app:cardElevation="10dp"
-                app:cardCornerRadius="15dp">
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -183,31 +182,31 @@
                         android:id="@+id/card5"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginTop="20dp"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/img_location"
-                        android:contentDescription="@string/todo" />
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/img_location" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Location"
-                        android:textSize="18sp"
-                        android:textColor="@color/lavender"
-                        android:fontFamily="@font/poppins_semibold"
                         android:layout_below="@+id/card5"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Location"
+                        android:textColor="@color/lavender"
+                        android:textSize="18sp" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
-                app:cardElevation="10dp"
-                app:cardCornerRadius="15dp">
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -217,32 +216,140 @@
                         android:id="@+id/card6"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginTop="20dp"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/img_location"
-                        android:contentDescription="@string/todo" />
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/img_location" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Location"
-                        android:textSize="18sp"
-                        android:textColor="@color/lavender"
-                        android:fontFamily="@font/poppins_semibold"
                         android:layout_below="@+id/card6"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Location"
+                        android:textColor="@color/lavender"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- Row 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/card7"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/img_location" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/card7"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Location"
+                        android:textColor="@color/lavender"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/card8"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/img_location" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/card8"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Location"
+                        android:textColor="@color/lavender"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/card9"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/img_location" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/card9"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Location"
+                        android:textColor="@color/lavender"
+                        android:textSize="18sp" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
 
-
-
     </LinearLayout>
-
-
 
 
 </ScrollView>

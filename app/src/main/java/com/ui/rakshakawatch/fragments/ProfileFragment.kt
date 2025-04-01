@@ -31,6 +31,7 @@ class ProfileFragment : Fragment() {
     private lateinit var setImage: ImageView
     private lateinit var etName: EditText
     private lateinit var etNumber: EditText
+    private lateinit var etNumber2: EditText
     private lateinit var etEmail: EditText
     private lateinit var etDOB: EditText
     private lateinit var etLocation: EditText
@@ -59,6 +60,7 @@ class ProfileFragment : Fragment() {
         setImage = view.findViewById(R.id.setImage)
         etName = view.findViewById(R.id.etName)
         etNumber = view.findViewById(R.id.etNumber)
+        etNumber2 = view.findViewById(R.id.etNumber2)
         etEmail = view.findViewById(R.id.etEmail)
         etDOB = view.findViewById(R.id.etDOB)
         etLocation = view.findViewById(R.id.etLocation)
@@ -127,6 +129,7 @@ class ProfileFragment : Fragment() {
                     etName.setText(document.getString("name") ?: "")
                     etEmail.setText(document.getString("email") ?: "")
                     etNumber.setText(document.getString("phone") ?: "")
+                    etNumber2.setText(document.getString("phone2") ?: "")
                     etDOB.setText(document.getString("dob") ?: "")
                     etLocation.setText(document.getString("location") ?: "")
 
@@ -178,6 +181,7 @@ class ProfileFragment : Fragment() {
                     "name" to etName.text.toString(),
                     "email" to etEmail.text.toString(),
                     "phone" to etNumber.text.toString(),
+                    "phone2" to etNumber2.text.toString(),
                     "dob" to etDOB.text.toString(),
                     "location" to etLocation.text.toString(),
                     "profilePicBase64" to (selectedBase64Image ?: existingProfilePic) // Keep old image if no new image is selected
@@ -220,16 +224,16 @@ class ProfileFragment : Fragment() {
             .commit()
     }
 
-    private fun uploadProfileImageToFirestore(base64String: String) {
-        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
-
-        val userRef = FirebaseFirestore.getInstance().collection("users").document(uid)
-        userRef.update("profilePicBase64", base64String)
-            .addOnSuccessListener {
-                Toast.makeText(requireContext(), "Profile Picture Updated!", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
-    }
+//    private fun uploadProfileImageToFirestore(base64String: String) {
+//        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+//
+//        val userRef = FirebaseFirestore.getInstance().collection("users").document(uid)
+//        userRef.update("profilePicBase64", base64String)
+//            .addOnSuccessListener {
+//                Toast.makeText(requireContext(), "Profile Picture Updated!", Toast.LENGTH_SHORT).show()
+//            }
+//            .addOnFailureListener { e ->
+//                Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+//            }
+//    }
 }
