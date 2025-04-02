@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity(), LocationListener, OnMapReadyCallback,
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         fragmentManager = supportFragmentManager
         openFragment(HomeFragment())
 

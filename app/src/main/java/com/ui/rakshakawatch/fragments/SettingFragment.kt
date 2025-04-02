@@ -27,6 +27,11 @@ class SettingFragment : Fragment() {
     private lateinit var db: FirebaseFirestore
     private lateinit var settingProfileImage: ImageView // Profile Image in HomeFragment
     private lateinit var settingProfileText: TextView
+    private lateinit var settingLanguageImg: ImageView
+    private lateinit var settingLogoutImg: ImageView
+    private lateinit var settingDeleteImg: ImageView
+    private lateinit var settingDarkImg: ImageView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,9 +43,21 @@ class SettingFragment : Fragment() {
         db = FirebaseFirestore.getInstance()
         settingProfileImage = view.findViewById(R.id.settingProfileImage)
         settingProfileText = view.findViewById(R.id.settingProfileText)
+        settingLanguageImg = view.findViewById(R.id.settingLanguageImg)
+        settingLogoutImg = view.findViewById(R.id.settingLogoutImg)
+        settingDeleteImg = view.findViewById(R.id.settingDeleteImg)
+        settingDarkImg = view.findViewById(R.id.settingDarkImg)
+
+        Glide.with(this).asGif().load(R.drawable.gif_around_the_world).into(settingLanguageImg)
+        Glide.with(this).asGif().load(R.drawable.gif_logout).into(settingLogoutImg)
+        Glide.with(this).asGif().load(R.drawable.gif_logout).into(settingLogoutImg)
+        Glide.with(this).asGif().load(R.drawable.gif_trash_bin).into(settingDeleteImg)
+        Glide.with(this).asGif().load(R.drawable.gif_night_mode).into(settingDarkImg)
         // Find Buttons
         val btnProfile = view.findViewById<LinearLayout>(R.id.profile)
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
+
+
 
         fetchProfileImage() // Fetch and display profile image
         fetchProfileText()  // Fetch and display profile text

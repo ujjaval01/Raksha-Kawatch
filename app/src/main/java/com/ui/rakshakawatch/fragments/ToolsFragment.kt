@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,6 +21,7 @@ class FragmentTools : Fragment() {
     private lateinit var db: FirebaseFirestore
     private lateinit var emergencyContactContainer: GridLayout
     private lateinit var btnAddContact: MaterialButton
+    private lateinit var card1: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +34,8 @@ class FragmentTools : Fragment() {
 
         btnAddContact = view.findViewById(R.id.btnAddContact)
         emergencyContactContainer = view.findViewById(R.id.emergencyContactContainer)
+        card1 = view.findViewById(R.id.card1)
+        Glide.with(this).asGif().load(R.drawable.gif_map).into(card1)
 
         // Add Contact Button Click Listener
         btnAddContact.setOnClickListener {

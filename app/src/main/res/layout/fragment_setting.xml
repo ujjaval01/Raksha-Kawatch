@@ -4,86 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:orientation="vertical"
+    android:background="@color/white"
     android:gravity="center"
-    android:background="@color/white">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:text="@string/settings_privacy"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- Profile Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/profile"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:text="@string/settings_privacy"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:paddingBottom="16dp"/>
+            android:orientation="horizontal">
 
-        <!-- Profile Section -->
+            <ImageView
+                android:id="@+id/settingProfileImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/circle_background2"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_person_24" />
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:clickable="true"
-                android:background="@drawable/rounded_edittext"
-                android:focusable="true">
+                android:orientation="vertical"
+                android:paddingStart="12dp">
 
-                <LinearLayout
-                    android:id="@+id/profile"
-                    android:orientation="horizontal"
-                    android:layout_width="220dp"
-                    android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/settingProfileImage"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/baseline_person_24"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/circle_background2"
-                    android:scaleType="centerCrop"
-                    android:importantForAccessibility="no" />
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/settingProfileText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingStart="12dp">
+                    android:hint="@string/vanshika_saini"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/settingProfileText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/vanshika_saini"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Edit Profile"
-                        android:textSize="14sp"
-                        android:textColor="@color/gray"/>
-                    </LinearLayout>
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Profile"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
             </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
-        <!-- General Settings -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="General"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:paddingBottom="8dp"
-            android:layout_marginTop="8dp"/>
+    <!-- General Settings -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="General"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:background="@drawable/rounded_edittext">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -94,30 +96,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="12dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:background="?android:attr/selectableItemBackground">
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <ImageView
+                    android:id="@+id/settingDarkImg"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/baseline_dark_mode_24"
-                    app:tint="@color/black" />
+                    android:src="@drawable/gif_night_mode" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingStart="12dp"
                     android:text="Dark Mode"
                     android:textSize="16sp"
-                    android:paddingStart="12dp"
                     tools:ignore="RtlSymmetry" />
 
                 <Switch
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:layout_gravity="end"
+                    android:layout_marginStart="10dp"
                     tools:ignore="UseSwitchCompatOrMaterialXml" />
             </LinearLayout>
 
@@ -125,33 +127,34 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="12dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:background="?android:attr/selectableItemBackground">
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <ImageView
+                    android:id="@+id/settingLanguageImg"
                     android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/baseline_language_24"
-                    app:tint="@color/black" />
+                    android:layout_height="28dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/gif_around_the_world" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingStart="12dp"
                     android:text="Change Language"
-                    android:textSize="16sp"
-                    android:paddingStart="12dp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <!-- Notification -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="12dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:background="?android:attr/selectableItemBackground">
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="24dp"
@@ -162,23 +165,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingStart="12dp"
                     android:text="Notification"
-                    android:textSize="16sp"
-                    android:paddingStart="12dp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-        <!-- Security Section -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Security"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"/>
+    <!-- Security Section -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="Security"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -191,119 +194,148 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-                <!-- Privacy -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+            <!-- Privacy -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_lock_24"
+                    app:tint="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:clickable="true"
-                    android:background="?android:attr/selectableItemBackground">
+                    android:paddingStart="12dp"
+                    android:text="Privacy Settings"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/baseline_lock_24"
-                        app:tint="@color/black" />
+            <!-- Security Settings -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="12dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Privacy Settings"
-                        android:textSize="16sp"
-                        android:paddingStart="12dp"/>
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_security_24"
+                    app:tint="@color/black" />
 
-                <!-- Security Settings -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:clickable="true"
-                    android:background="?android:attr/selectableItemBackground">
+                    android:paddingStart="12dp"
+                    android:text="Security Settings"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/baseline_security_24"
-                        app:tint="@color/black" />
+            <!-- Language -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="12dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Security Settings"
-                        android:textSize="16sp"
-                        android:paddingStart="12dp"/>
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_storage_24"
+                    app:tint="@color/black" />
 
-                <!-- Language -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:clickable="true"
-                    android:background="?android:attr/selectableItemBackground">
+                    android:paddingStart="12dp"
+                    android:text="Data &amp; Storage"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/baseline_storage_24"
-                        app:tint="@color/black" />
+            <!-- Help and Support -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="12dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Data &amp; Storage"
-                        android:textSize="16sp"
-                        android:paddingStart="12dp"/>
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_help_24"
+                    app:tint="@color/black" />
 
-                <!-- Help and Support -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:clickable="true"
-                    android:background="?android:attr/selectableItemBackground">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/baseline_help_24"
-                        app:tint="@color/black" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Help &amp; Support"
-                        android:textSize="16sp"
-                        android:paddingStart="12dp"/>
-                </LinearLayout>
+                    android:paddingStart="12dp"
+                    android:text="Help &amp; Support"
+                    android:textSize="16sp" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
 
-        <!-- Logout -->
+    <!-- Logout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/settingLogoutImg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/btnLogout"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/gif_logout" />
+
         <Button
             android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:text="Logout"
+            android:layout_centerInParent="true"
             android:layout_marginTop="20dp"
-            android:textColor="@color/white"
             android:backgroundTint="@color/red"
-            android:drawableStart="@drawable/baseline_logout_24"/>
+            android:text="@string/logout"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/settingDeleteImg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/gif_trash_bin" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:focusable="true"
             android:text="Delete Account"
             android:textColor="@color/red"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:textSize="18sp"
-            android:clickable="true"
-            android:focusable="true" />
+            android:textSize="18sp" />
+
+    </RelativeLayout>
 </LinearLayout>

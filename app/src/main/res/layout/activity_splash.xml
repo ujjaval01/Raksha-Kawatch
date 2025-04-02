@@ -10,11 +10,20 @@
     tools:context=".SplashActivity">
 
     <ImageView
-        android:id="@+id/img"
+        android:id="@+id/SplashImg"
         android:layout_width="wrap_content"
-        android:layout_height="220dp"
+        android:layout_height="250dp"
         android:layout_marginTop="180dp"
-        android:src="@drawable/img_app_logo"/>
+        android:src="@drawable/gif_protection"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/img_app_logo" />
+
     <TextView
         android:id="@+id/appName"
         android:layout_width="wrap_content"
@@ -24,14 +33,15 @@
         android:textColor="@color/blue"
         android:textStyle="bold"
         android:layout_centerInParent="true"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/img"
+
+        android:layout_below="@+id/SplashImg"
         android:gravity="center"/>
     <TextView
         android:id="@+id/runningTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/splash_text"
+        android:gravity="center"
         android:textSize="25sp"
         android:layout_below="@id/appName"
         android:layout_marginTop="12dp"
@@ -46,7 +56,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Powerd By: Ujjaval Saini"
+        android:text="@string/powerd_by_ujjaval_saini"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:textColor="@color/white"

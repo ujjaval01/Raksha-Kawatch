@@ -51,6 +51,12 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
 
+
+
+        val btnSOS = view.findViewById<ImageView>(R.id.btnSOS)
+        Glide.with(this).asGif().load(R.drawable.gif_sos).into(btnSOS)
+
+
         homeProfileImage = view.findViewById(R.id.homeProfileImage)
         homeProfileText = view.findViewById(R.id.homeProfileText)
         firebaseAuth = FirebaseAuth.getInstance()
