@@ -21,7 +21,9 @@ class FragmentTools : Fragment() {
     private lateinit var db: FirebaseFirestore
     private lateinit var emergencyContactContainer: GridLayout
     private lateinit var btnAddContact: MaterialButton
-    private lateinit var card1: ImageView
+    private lateinit var map: ImageView
+    private lateinit var loudSiren: ImageView
+    private lateinit var quickVideo: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,8 +36,13 @@ class FragmentTools : Fragment() {
 
         btnAddContact = view.findViewById(R.id.btnAddContact)
         emergencyContactContainer = view.findViewById(R.id.emergencyContactContainer)
-        card1 = view.findViewById(R.id.card1)
-        Glide.with(this).asGif().load(R.drawable.gif_map).into(card1)
+        map = view.findViewById(R.id.map)
+        loudSiren = view.findViewById(R.id.loudSiren)
+        quickVideo = view.findViewById(R.id.quickVideo)
+
+        Glide.with(this).asGif().load(R.drawable.gif_map).into(map)
+        Glide.with(this).asGif().load(R.drawable.gif_siren).into(loudSiren)
+        Glide.with(this).asGif().load(R.drawable.gif_cameraman).into(quickVideo)
 
         // Add Contact Button Click Listener
         btnAddContact.setOnClickListener {

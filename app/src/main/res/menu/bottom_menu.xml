@@ -15,7 +15,7 @@
         android:title="Map"
         android:enabled="true"/>
     <item
-        android:id="@+id/bottom_chatbot"
+        android:id="@+id/bottom_chatHelp"
         android:title="Help"
         android:icon="@drawable/baseline_chat_24"/>
     <item

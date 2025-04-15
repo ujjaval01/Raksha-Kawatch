@@ -25,7 +25,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.ui.rakshakawatch.databinding.ActivityMainBinding
-import com.ui.rakshakawatch.fragments.ChatbotFragment
+import com.ui.rakshakawatch.fragments.ChatHelpFragment
 import com.ui.rakshakawatch.fragments.HomeFragment
 import com.zagori.bottomnavbar.BottomNavBar
 
@@ -49,8 +49,6 @@ class MainActivity : AppCompatActivity(), LocationListener, OnMapReadyCallback,
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
         fragmentManager = supportFragmentManager
         openFragment(HomeFragment())
@@ -145,7 +143,7 @@ class MainActivity : AppCompatActivity(), LocationListener, OnMapReadyCallback,
             R.id.bottom_home -> {
                 openFragment(HomeFragment())
             }
-            R.id.bottom_chatbot -> openFragment(ChatbotFragment())
+            R.id.bottom_chatHelp -> openFragment(ChatHelpFragment())
             R.id.bottom_tools -> openFragment(FragmentTools())
             R.id.bottom_setting -> openFragment(SettingFragment())
             R.id.bottom_map -> {

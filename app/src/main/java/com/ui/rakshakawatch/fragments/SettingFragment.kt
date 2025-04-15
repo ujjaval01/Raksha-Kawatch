@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.ui.rakshakawatch.LoginActivity
 import com.ui.rakshakawatch.R
+import com.ui.rakshakawatch.fragments.AboutFragment
 import com.ui.rakshakawatch.fragments.ProfileFragment
 
 
@@ -31,6 +32,7 @@ class SettingFragment : Fragment() {
     private lateinit var settingLogoutImg: ImageView
     private lateinit var settingDeleteImg: ImageView
     private lateinit var settingDarkImg: ImageView
+    private lateinit var about: LinearLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,20 +40,25 @@ class SettingFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_setting, container, false)
 
+        //       when user back from the subFragment, show bottom navBar..
+        val bottomNav = activity?.findViewById<View>(R.id.bottomNavigation)
+        bottomNav?.visibility = View.VISIBLE
+
         // Initialize FirebaseAuth
         firebaseAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         settingProfileImage = view.findViewById(R.id.settingProfileImage)
         settingProfileText = view.findViewById(R.id.settingProfileText)
         settingLanguageImg = view.findViewById(R.id.settingLanguageImg)
-        settingLogoutImg = view.findViewById(R.id.settingLogoutImg)
-        settingDeleteImg = view.findViewById(R.id.settingDeleteImg)
+//        settingLogoutImg = view.findViewById(R.id.settingLogoutImg)
+//        settingDeleteImg = view.findViewById(R.id.settingDeleteImg)
         settingDarkImg = view.findViewById(R.id.settingDarkImg)
+        about = view.findViewById(R.id.about)
 
         Glide.with(this).asGif().load(R.drawable.gif_around_the_world).into(settingLanguageImg)
-        Glide.with(this).asGif().load(R.drawable.gif_logout).into(settingLogoutImg)
-        Glide.with(this).asGif().load(R.drawable.gif_logout).into(settingLogoutImg)
-        Glide.with(this).asGif().load(R.drawable.gif_trash_bin).into(settingDeleteImg)
+//        Glide.with(this).asGif().load(R.drawable.gif_logout).into(settingLogoutImg)
+//        Glide.with(this).asGif().load(R.drawable.gif_logout).into(settingLogoutImg)
+//        Glide.with(this).asGif().load(R.drawable.gif_trash_bin).into(settingDeleteImg)
         Glide.with(this).asGif().load(R.drawable.gif_night_mode).into(settingDarkImg)
         // Find Buttons
         val btnProfile = view.findViewById<LinearLayout>(R.id.profile)
@@ -70,6 +77,16 @@ class SettingFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+
+//        open helpAndSupport fragment
+        about.setOnClickListener {
+            val helpAndSupport = AboutFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, helpAndSupport)
+                .addToBackStack(null)
+                .commit()
+        }
+
 
         // Logout Button
         btnLogout.setOnClickListener {

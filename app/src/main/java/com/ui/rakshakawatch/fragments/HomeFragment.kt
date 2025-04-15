@@ -7,11 +7,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
-import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.util.Base64
 import android.view.LayoutInflater
@@ -20,6 +18,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -30,6 +29,12 @@ import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.ui.rakshakawatch.R
+import com.ui.rakshakawatch.sosBackend.ApiClient
+import com.ui.rakshakawatch.sosBackend.SosRequest
+import com.ui.rakshakawatch.sosBackend.SosResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.IOException
 import java.util.Locale
 
@@ -37,130 +42,177 @@ class HomeFragment : Fragment() {
 
     private val CALL_PERMISSION_REQUEST = 1
     private val LOCATION_PERMISSION_REQUEST = 1001
+
     private lateinit var currentLocation: TextView
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-    private lateinit var homeProfileImage: ImageView // Profile Image in HomeFragment
+    private lateinit var homeProfileImage: ImageView
     private lateinit var homeProfileText: TextView
+    private lateinit var btnSOS: ImageView
+    private lateinit var loadingProgressBar: ProgressBar
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    private var pendingPhoneCall: String? = null
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        activity?.findViewById<View>(R.id.bottomNavigation)?.visibility = View.VISIBLE
 
-
-
-        val btnSOS = view.findViewById<ImageView>(R.id.btnSOS)
+        btnSOS = view.findViewById(R.id.btnSOS)
         Glide.with(this).asGif().load(R.drawable.gif_sos).into(btnSOS)
+        btnSOS.setOnClickListener { sendSOSAlert() }
 
-
-        homeProfileImage = view.findViewById(R.id.homeProfileImage)
-        homeProfileText = view.findViewById(R.id.homeProfileText)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         firebaseAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        fetchProfileImage() // Fetch and display profile image
-        fetchProfileText()  // Fetch and display profile text
-
-
-        // Initialize location provider
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-
-        // Find Views
-        val mapLocation = view.findViewById<LinearLayout>(R.id.mapLocation)
-
-        // call btn
-        val btnPolice = view.findViewById<Button>(R.id.btnPolice)
-        val btnWomenHelp = view.findViewById<Button>(R.id.btnWomenHelp)
-        val btnFire = view.findViewById<Button>(R.id.btnFire)
-        val btnAmbulance = view.findViewById<Button>(R.id.btnAmbulance)
-        val btnRailway = view.findViewById<Button>(R.id.btnRailway)
-        val btnRoadAcc = view.findViewById<Button>(R.id.btnRoadAcc)
-        val btnChildHelp = view.findViewById<Button>(R.id.btnChildHelp)
-        val btnCyberCrime = view.findViewById<Button>(R.id.btnCyberCrime)
-        val btnTrainAcc = view.findViewById<Button>(R.id.btnTrainAcc)
-        val btnDemo2 = view.findViewById<Button>(R.id.btnDemo2)
-        val btnDemo3 = view.findViewById<Button>(R.id.btnDemo3)
-        val btnDemo4 = view.findViewById<Button>(R.id.btnDemo4)
-
-        val profile = view.findViewById<LinearLayout>(R.id.profile)
+        loadingProgressBar = view.findViewById(R.id.loadingProgressBar)
+        homeProfileImage = view.findViewById(R.id.homeProfileImage)
+        homeProfileText = view.findViewById(R.id.homeProfileText)
         currentLocation = view.findViewById(R.id.currentLocation)
 
-        // Fetch current location
+        fetchProfileImage()
+        fetchProfileText()
         getUserLocation()
 
-        profile.setOnClickListener {
-            val profileFragment = ProfileFragment()
+        view.findViewById<LinearLayout>(R.id.profile).setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, profileFragment)
+                .replace(R.id.fragment_container, ProfileFragment())
                 .addToBackStack(null)
                 .commit()
         }
 
-
-        btnPolice.setOnClickListener { makeCall("112") }
-        btnWomenHelp.setOnClickListener { makeCall("1091") }
-        btnFire.setOnClickListener { makeCall("101") }
-        btnAmbulance.setOnClickListener { makeCall("108") }
-        btnRailway.setOnClickListener { makeCall("139") }
-        btnRoadAcc.setOnClickListener { makeCall("1073") }
-        btnChildHelp.setOnClickListener { makeCall("1098") }
-        btnCyberCrime.setOnClickListener { makeCall("1930") }
-        btnTrainAcc.setOnClickListener { makeCall("1072") }
-        btnDemo2.setOnClickListener { makeCall("9690020293") }
-        btnDemo3.setOnClickListener { makeCall("9690020293") }
-        btnDemo4.setOnClickListener { makeCall("9690020293") }
-
-        mapLocation.setOnClickListener {
-            val mapFragment = MapFragment()
+        view.findViewById<LinearLayout>(R.id.mapLocation).setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, mapFragment)
+                .replace(R.id.fragment_container, MapFragment())
                 .addToBackStack(null)
                 .commit()
         }
+
+        val emergencyButtons = mapOf(
+            R.id.btnPolice to "112",
+            R.id.btnWomenHelp to "1091",
+            R.id.btnFire to "101",
+            R.id.btnAmbulance to "108",
+            R.id.btnRailway to "139",
+            R.id.btnRoadAcc to "1073",
+            R.id.btnChildHelp to "1098",
+            R.id.btnCyberCrime to "1930",
+            R.id.btnTrainAcc to "1072",
+            R.id.btnDemo2 to "9690020293",
+            R.id.btnDemo3 to "9690020293",
+            R.id.btnDemo4 to "9690020293"
+        )
+
+        emergencyButtons.forEach { (id, number) ->
+            view.findViewById<Button>(id)?.setOnClickListener { makeCall(number) }
+        }
+
         return view
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun fetchProfileText() {
+    @SuppressLint("MissingPermission")
+    private fun sendSOSAlert() {
+        loadingProgressBar.visibility = View.VISIBLE
+
         val uid = firebaseAuth.currentUser?.uid ?: return
 
+        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+            if (location != null) {
+                val latitude = location.latitude
+                val longitude = location.longitude
+                val mapsUrl = "https://www.google.com/maps?q=$latitude,$longitude"
+
+                val message = """
+                    🚨 SOS Alert! 🚨
+                    
+                    I am in danger and need immediate help.
+                    My Live Location: $mapsUrl
+                    
+                    Please help me immediately!
+                """.trimIndent()
+
+                db.collection("users").document(uid)
+                    .collection("emergencyContacts").document(uid)
+                    .get()
+                    .addOnSuccessListener { documents ->
+                        for (doc in documents) {
+                            val phone = doc.getString("phone") ?: continue
+                            val sosRequest = SosRequest(to = phone, message = message)
+
+                            ApiClient.instance.sendSos(sosRequest)
+                                .enqueue(object : Callback<SosResponse> {
+                                    override fun onResponse(call: Call<SosResponse>, response: Response<SosResponse>) {}
+                                    override fun onFailure(call: Call<SosResponse>, t: Throwable) {
+                                        Toast.makeText(requireContext(), "Failed to send SOS to $phone", Toast.LENGTH_SHORT).show()
+                                    }
+                                })
+                        }
+
+                        loadingProgressBar.visibility = View.GONE
+                        Toast.makeText(requireContext(), "SOS Sent to All Guardians!", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener {
+                        loadingProgressBar.visibility = View.GONE
+                        Toast.makeText(requireContext(), "Error fetching contacts", Toast.LENGTH_SHORT).show()
+                    }
+
+            } else {
+                loadingProgressBar.visibility = View.GONE
+                Toast.makeText(requireContext(), "Unable to get location", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        fetchProfileImage()
+    }
+
+    private fun makeCall(number: String) {
+        val callIntent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$number"))
+
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.CALL_PHONE)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            pendingPhoneCall = number
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.CALL_PHONE),
+                CALL_PERMISSION_REQUEST
+            )
+            Toast.makeText(requireContext(), "Call permission is required.", Toast.LENGTH_SHORT).show()
+        } else {
+            try {
+                startActivity(callIntent)
+            } catch (e: SecurityException) {
+                e.printStackTrace()
+                Toast.makeText(requireContext(), "Permission error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun fetchProfileText() {
+        val uid = firebaseAuth.currentUser?.uid ?: return
         db.collection("users").document(uid).get()
             .addOnSuccessListener { document ->
-                if (document.exists()) {
-                    val userName = document.getString("name") ?: "User"
-                    homeProfileText.text = userName // Display username
-                }
+                homeProfileText.text = document.getString("name") ?: "User"
             }
             .addOnFailureListener { e ->
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
             }
-    }
-    override fun onResume() {
-        super.onResume()
-        fetchProfileImage() // Refresh profile image when HomeFragment is opened
     }
 
     private fun fetchProfileImage() {
         val uid = firebaseAuth.currentUser?.uid ?: return
-
         db.collection("users").document(uid).get()
             .addOnSuccessListener { document ->
-                if (document.exists()) {
-                    val base64String = document.getString("profilePicBase64")
-                    if (!base64String.isNullOrEmpty()) {
-                        val imageBytes = Base64.decode(base64String, Base64.DEFAULT)
-                        val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-
-                        // Use Glide to set circular image
-                        Glide.with(this)
-                            .load(bitmap) // Load the actual bitmap
-                            .circleCrop() // Apply circle transformation
-                            .into(homeProfileImage) // Set image into ImageView
-                    }
+                val base64String = document.getString("profilePicBase64")
+                if (!base64String.isNullOrEmpty()) {
+                    val imageBytes = Base64.decode(base64String, Base64.DEFAULT)
+                    val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+                    Glide.with(this).load(bitmap).circleCrop().into(homeProfileImage)
                 }
             }
             .addOnFailureListener { e ->
@@ -168,17 +220,9 @@ class HomeFragment : Fragment() {
             }
     }
 
-
-
-
     private fun getUserLocation() {
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(), Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(
-                requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST)
             return
         }
@@ -195,36 +239,13 @@ class HomeFragment : Fragment() {
     private fun getAddressFromLocation(latitude: Double, longitude: Double) {
         try {
             val geocoder = Geocoder(requireContext(), Locale.getDefault())
-            val addresses: List<Address>? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                geocoder.getFromLocation(latitude, longitude, 1)
-            } else {
-                geocoder.getFromLocation(latitude, longitude, 1)
-            }
-
-            if (!addresses.isNullOrEmpty()) {
-                val address = addresses[0]
-                val cityName = address.locality ?: address.adminArea ?: address.subLocality ?: "Unknown Location"
-                currentLocation.text = cityName
-
-                // Save location in SharedPreferences
-                val sharedPref = requireContext().getSharedPreferences("LocationPrefs", Context.MODE_PRIVATE)
-                sharedPref.edit().putString("current_location", cityName).apply()
-            } else {
-                currentLocation.text = "Address not found"
-            }
+            val addresses = geocoder.getFromLocation(latitude, longitude, 1)
+            val cityName = addresses?.firstOrNull()?.locality ?: "Unknown Location"
+            currentLocation.text = cityName
+            requireContext().getSharedPreferences("LocationPrefs", Context.MODE_PRIVATE)
+                .edit().putString("current_location", cityName).apply()
         } catch (e: IOException) {
-            e.printStackTrace()
             currentLocation.text = "Error fetching address"
-        }
-    }
-
-    private fun makeCall(number: String) {
-        val callIntent = Intent(Intent.ACTION_CALL)
-        callIntent.data = Uri.parse("tel:$number")
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CALL_PHONE), CALL_PERMISSION_REQUEST)
-        } else {
-            startActivity(callIntent)
         }
     }
 
@@ -233,14 +254,18 @@ class HomeFragment : Fragment() {
 
         when (requestCode) {
             CALL_PERMISSION_REQUEST -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(requireContext(), "Call permission granted", Toast.LENGTH_SHORT).show()
+                if (grantResults.firstOrNull() == PackageManager.PERMISSION_GRANTED) {
+                    pendingPhoneCall?.let {
+                        makeCall(it)
+                        pendingPhoneCall = null
+                    }
                 } else {
                     Toast.makeText(requireContext(), "Call permission denied", Toast.LENGTH_SHORT).show()
                 }
             }
+
             LOCATION_PERMISSION_REQUEST -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.firstOrNull() == PackageManager.PERMISSION_GRANTED) {
                     getUserLocation()
                 } else {
                     currentLocation.text = "Permission Denied!"

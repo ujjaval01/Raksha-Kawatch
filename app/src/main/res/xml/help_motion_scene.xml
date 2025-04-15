@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/end"
+        app:duration="1000">
+
+        <OnSwipe
+            app:touchAnchorId="@+id/help_icon"
+            app:touchAnchorSide="top"
+            app:dragDirection="dragUp" />
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/help_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            android:translationY="0dp"/>
+
+        <Constraint
+            android:id="@+id/ai_chatbot_help"
+            app:layout_constraintTop_toBottomOf="@id/help_icon"
+            android:alpha="0"/>
+
+        <Constraint
+            android:id="@+id/out_app_service_help"
+            app:layout_constraintTop_toBottomOf="@id/ai_chatbot_help"
+            android:alpha="0"/>
+
+        <Constraint
+            android:id="@+id/faq_section"
+            app:layout_constraintTop_toBottomOf="@id/out_app_service_help"
+            android:alpha="0"/>
+
+        <Constraint
+            android:id="@+id/contact_support"
+            app:layout_constraintTop_toBottomOf="@id/faq_section"
+            android:alpha="0"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/help_icon"
+            android:translationY="-100dp"/>
+
+        <Constraint
+            android:id="@+id/ai_chatbot_help"
+            android:alpha="1"/>
+
+        <Constraint
+            android:id="@+id/out_app_service_help"
+            android:alpha="1"/>
+
+        <Constraint
+            android:id="@+id/faq_section"
+            android:alpha="1"/>
+
+        <Constraint
+            android:id="@+id/contact_support"
+            android:alpha="1"/>
+    </ConstraintSet>
+
+</MotionScene>

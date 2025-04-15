@@ -35,6 +35,15 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    packaging {
+        resources {
+            excludes += "META-INF/DEPENDENCIES"
+            excludes += "META-INF/LICENSE"
+            excludes += "META-INF/LICENSE.txt"
+            excludes += "META-INF/NOTICE"
+            excludes += "META-INF/NOTICE.txt"
+        }
+    }
 }
 
 dependencies {
@@ -89,6 +98,14 @@ dependencies {
 
         implementation("com.github.bumptech.glide:glide:4.16.0")
         annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
+        // sos send
+        implementation("com.twilio.sdk:twilio:9.10.0")
+        implementation("com.squareup.retrofit2:retrofit:2.9.0")
+        implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+        implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+
+
 
 
 

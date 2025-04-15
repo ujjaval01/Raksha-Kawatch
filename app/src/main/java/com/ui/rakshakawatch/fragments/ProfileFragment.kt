@@ -51,6 +51,9 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        //        hide bottom navBar
+        val bottomNav = activity?.findViewById<View>(R.id.bottomNavigation)
+        bottomNav?.visibility = View.GONE
 
         firebaseAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -184,21 +187,31 @@ class ProfileFragment : Fragment() {
                     "phone2" to etNumber2.text.toString(),
                     "dob" to etDOB.text.toString(),
                     "location" to etLocation.text.toString(),
-                    "profilePicBase64" to (selectedBase64Image ?: existingProfilePic) // Keep old image if no new image is selected
+                    "profilePicBase64" to (selectedBase64Image
+                        ?: existingProfilePic) // Keep old image if no new image is selected
                 )
 
                 db.collection("users").document(uid).set(updatedData)
                     .addOnSuccessListener {
-                        Toast.makeText(requireContext(), "Profile Updated!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Profile Updated!", Toast.LENGTH_SHORT)
+                            .show()
                         navigateToHomeFragment()
                     }
                     .addOnFailureListener { e ->
-                        Toast.makeText(requireContext(), "Update Failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            "Update Failed: ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
             }
 
             .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Error fetching profile: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Error fetching profile: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         // Animate Loader Disappearance & Profile Content Appearance
         profileLoader.animate()

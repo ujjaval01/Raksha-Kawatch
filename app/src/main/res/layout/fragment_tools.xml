@@ -103,13 +103,14 @@
                         app:cardElevation="10dp">
 
                         <RelativeLayout
+                            android:id="@+id/mapCard1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <ImageView
-                                android:id="@+id/card1"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:id="@+id/map"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="20dp"
                                 android:contentDescription="@string/todo"
@@ -118,9 +119,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/card1"
+                                android:layout_below="@+id/map"
                                 android:layout_centerHorizontal="true"
-                                android:layout_marginTop="5dp"
                                 android:fontFamily="@font/poppins_semibold"
                                 android:text="Location"
                                 android:textColor="@color/lavender"
@@ -137,26 +137,26 @@
                         app:cardElevation="10dp">
 
                         <RelativeLayout
+                            android:id="@+id/loudSirenCard2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <ImageView
-                                android:id="@+id/card2"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:id="@+id/loudSiren"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="20dp"
                                 android:contentDescription="@string/todo"
-                                android:src="@drawable/img_location" />
+                                android:src="@drawable/gif_siren" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/card2"
+                                android:layout_below="@+id/loudSiren"
                                 android:layout_centerHorizontal="true"
-                                android:layout_marginTop="5dp"
                                 android:fontFamily="@font/poppins_semibold"
-                                android:text="Location"
+                                android:text="Siren"
                                 android:textColor="@color/lavender"
                                 android:textSize="18sp" />
                         </RelativeLayout>
@@ -171,26 +171,27 @@
                         app:cardElevation="10dp">
 
                         <RelativeLayout
+                            android:id="@+id/quickVideoCard3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <ImageView
-                                android:id="@+id/card3"
+                                android:id="@+id/quickVideo"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="20dp"
                                 android:contentDescription="@string/todo"
-                                android:src="@drawable/img_location" />
+                                android:src="@drawable/gif_cameraman" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/card3"
+                                android:layout_below="@+id/quickVideo"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="5dp"
                                 android:fontFamily="@font/poppins_semibold"
-                                android:text="Location"
+                                android:text="Quick Video"
                                 android:textColor="@color/lavender"
                                 android:textSize="18sp" />
                         </RelativeLayout>
