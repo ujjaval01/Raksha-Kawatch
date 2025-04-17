@@ -48,5 +48,11 @@
     <string name="powerd_by_ujjaval_saini">Powerd By: Ujjaval Saini</string>
     <string name="get_instant_help_through_ai_powered_chatbot">Get instant help through AI-powered chatbot.</string>
 
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
 
 </resources>

@@ -10,10 +10,12 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -31,13 +33,13 @@ class ProfileFragment : Fragment() {
     private lateinit var setImage: ImageView
     private lateinit var etName: EditText
     private lateinit var etNumber: EditText
-    private lateinit var etNumber2: EditText
-    private lateinit var etEmail: EditText
+    private lateinit var tvEmail: TextView
     private lateinit var etDOB: EditText
     private lateinit var etLocation: EditText
     private lateinit var saveData: TextView
     private lateinit var profileLoader: ProgressBar
     private lateinit var profileContent: LinearLayout
+    private lateinit var spinnerGender: Spinner
 
     private var selectedImageUri: Uri? = null
     private var selectedBase64Image: String? = null
@@ -51,7 +53,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        //        hide bottom navBar
+
         val bottomNav = activity?.findViewById<View>(R.id.bottomNavigation)
         bottomNav?.visibility = View.GONE
 
@@ -63,13 +65,21 @@ class ProfileFragment : Fragment() {
         setImage = view.findViewById(R.id.setImage)
         etName = view.findViewById(R.id.etName)
         etNumber = view.findViewById(R.id.etNumber)
-        etNumber2 = view.findViewById(R.id.etNumber2)
-        etEmail = view.findViewById(R.id.etEmail)
+        tvEmail = view.findViewById(R.id.tvEmail)
         etDOB = view.findViewById(R.id.etDOB)
         etLocation = view.findViewById(R.id.etLocation)
         saveData = view.findViewById(R.id.saveData)
         profileLoader = view.findViewById(R.id.profileLoader)
         profileContent = view.findViewById(R.id.profileContent)
+        spinnerGender = view.findViewById(R.id.spinnerGender)
+
+        val adapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.gender_array,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerGender.adapter = adapter
 
         firebaseAuth.currentUser?.let {
             fetchUserData()
@@ -80,12 +90,15 @@ class ProfileFragment : Fragment() {
         profileImage.setOnClickListener {
             openGallery()
         }
+
         saveData.setOnClickListener {
             updateUserData()
         }
+
         backArrow.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
+
         return view
     }
 
@@ -101,13 +114,11 @@ class ProfileFragment : Fragment() {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             selectedImageUri = data.data
 
-            // Use Glide to load the image as a circle
             Glide.with(this)
                 .load(selectedImageUri)
                 .circleCrop()
                 .into(profileImage)
 
-            // Convert selected image to Base64 for storage
             selectedBase64Image = encodeImageToBase64(selectedImageUri!!)
         }
     }
@@ -116,79 +127,81 @@ class ProfileFragment : Fragment() {
         val inputStream = requireActivity().contentResolver.openInputStream(uri)
         val bitmap = BitmapFactory.decodeStream(inputStream)
         val outputStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, outputStream) // Compress image
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, outputStream)
         val byteArray = outputStream.toByteArray()
         return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
 
     private fun fetchUserData() {
-        profileLoader.visibility = View.VISIBLE  // Show loader
-        profileContent.visibility = View.GONE  // Hide content
+        profileLoader.visibility = View.VISIBLE
+        profileContent.visibility = View.GONE
         val uid = firebaseAuth.currentUser?.uid ?: return
 
         db.collection("users").document(uid).get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
                     etName.setText(document.getString("name") ?: "")
-                    etEmail.setText(document.getString("email") ?: "")
+                    tvEmail.text = document.getString("email") ?: ""
                     etNumber.setText(document.getString("phone") ?: "")
-                    etNumber2.setText(document.getString("phone2") ?: "")
                     etDOB.setText(document.getString("dob") ?: "")
                     etLocation.setText(document.getString("location") ?: "")
+
+                    // Set gender spinner value
+                    val gender = document.getString("gender") ?: ""
+                    val genderArray = resources.getStringArray(R.array.gender_array)
+                    val genderIndex = genderArray.indexOf(gender)
+                    if (genderIndex >= 0) {
+                        spinnerGender.setSelection(genderIndex)
+                    }
 
                     val base64String = document.getString("profilePicBase64")
                     if (!base64String.isNullOrEmpty()) {
                         val imageBytes = Base64.decode(base64String, Base64.DEFAULT)
                         val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-
-                        // Use Glide to display the circular image
                         Glide.with(this)
                             .load(bitmap)
                             .circleCrop()
                             .into(profileImage)
                     }
                 }
-                // Delay to show loader for 1-2 seconds
+
                 profileLoader.animate()
-                    .alpha(0f) // Fade out loader
+                    .alpha(0f)
                     .setDuration(1000)
                     .withEndAction {
                         profileLoader.visibility = View.GONE
-
                         profileContent.alpha = 0f
                         profileContent.visibility = View.VISIBLE
                         profileContent.animate()
-                            .alpha(1f) // Fade in profile content
+                            .alpha(1f)
                             .setDuration(1000)
                             .start()
-                    }.start() // 1.5 seconds
+                    }.start()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-                profileLoader.visibility = View.GONE  // Hide loader in case of error
-                profileContent.visibility = View.VISIBLE  // Show content
+                profileLoader.visibility = View.GONE
+                profileContent.visibility = View.VISIBLE
             }
     }
 
     private fun updateUserData() {
-        profileLoader.visibility = View.VISIBLE  // Show loader
-        profileContent.visibility = View.GONE  // Hide content
+        profileLoader.visibility = View.VISIBLE
+        profileContent.visibility = View.GONE
         val uid = firebaseAuth.currentUser?.uid ?: return
 
-        // Fetch existing profile picture before updating
         db.collection("users").document(uid).get()
             .addOnSuccessListener { document ->
                 val existingProfilePic = document.getString("profilePicBase64")
 
                 val updatedData = hashMapOf(
                     "name" to etName.text.toString(),
-                    "email" to etEmail.text.toString(),
+                    "email" to tvEmail.text.toString(),
                     "phone" to etNumber.text.toString(),
-                    "phone2" to etNumber2.text.toString(),
                     "dob" to etDOB.text.toString(),
                     "location" to etLocation.text.toString(),
-                    "profilePicBase64" to (selectedBase64Image
-                        ?: existingProfilePic) // Keep old image if no new image is selected
+                    "gender" to spinnerGender.selectedItem.toString(),
+                    "profilePicBase64" to (selectedBase64Image ?: existingProfilePic)
                 )
 
                 db.collection("users").document(uid).set(updatedData)
@@ -205,7 +218,6 @@ class ProfileFragment : Fragment() {
                         ).show()
                     }
             }
-
             .addOnFailureListener { e ->
                 Toast.makeText(
                     requireContext(),
@@ -213,22 +225,20 @@ class ProfileFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-        // Animate Loader Disappearance & Profile Content Appearance
+
         profileLoader.animate()
-            .alpha(0f) // Fade out loader
+            .alpha(0f)
             .setDuration(1000)
             .withEndAction {
                 profileLoader.visibility = View.GONE
-
                 profileContent.alpha = 0f
                 profileContent.visibility = View.VISIBLE
                 profileContent.animate()
-                    .alpha(1f) // Fade in profile content
+                    .alpha(1f)
                     .setDuration(1000)
                     .start()
-            }.start() // 1.5 seconds
+            }.start()
     }
-
 
     private fun navigateToHomeFragment() {
         parentFragmentManager.beginTransaction()
@@ -236,17 +246,4 @@ class ProfileFragment : Fragment() {
             .addToBackStack(null)
             .commit()
     }
-
-//    private fun uploadProfileImageToFirestore(base64String: String) {
-//        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
-//
-//        val userRef = FirebaseFirestore.getInstance().collection("users").document(uid)
-//        userRef.update("profilePicBase64", base64String)
-//            .addOnSuccessListener {
-//                Toast.makeText(requireContext(), "Profile Picture Updated!", Toast.LENGTH_SHORT).show()
-//            }
-//            .addOnFailureListener { e ->
-//                Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-//            }
-//    }
 }

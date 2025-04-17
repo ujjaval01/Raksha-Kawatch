@@ -35,24 +35,24 @@
                 android:layout_height="wrap_content"
                 android:alignmentMode="alignMargins"
                 android:columnCount="3"
+                android:minHeight="50dp"
                 android:rowOrderPreserved="false"
-                android:useDefaultMargins="true">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnAddContact"
-                    style="@style/Widget.Material3.Button.ElevatedButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill_horizontal"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/bg_neumorphic4"
-                    android:text="Add +"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:backgroundTint="@null" />
-            </GridLayout>
+                android:useDefaultMargins="true"/>
         </ScrollView>
+
+            <!-- Place the button just BELOW ScrollView -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddContact"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_neumorphic4"
+                android:text="Add +"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:backgroundTint="@null" />
+
     </LinearLayout>
 
     <!-- Quick Safety Tools Section -->

@@ -141,6 +141,7 @@ class MainActivity : AppCompatActivity(), LocationListener, OnMapReadyCallback,
         if (menuItem?.itemId == binding.bottomNavigation.id) return true
          when (menuItem?.itemId) {
             R.id.bottom_home -> {
+
                 openFragment(HomeFragment())
             }
             R.id.bottom_chatHelp -> openFragment(ChatHelpFragment())

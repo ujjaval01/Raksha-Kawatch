@@ -50,9 +50,16 @@ class HomeFragment : Fragment() {
     private lateinit var homeProfileImage: ImageView
     private lateinit var homeProfileText: TextView
     private lateinit var btnSOS: ImageView
-    private lateinit var loadingProgressBar: ProgressBar
+    private lateinit var sosProgressBar: ProgressBar
+    private lateinit var homeFragmentLoader: ProgressBar
+    // Flags to manage loading
+    private var profileNameLoaded: Boolean = false
+    private var profileImageLoaded: Boolean = false
+    private var locationLoaded: Boolean = false
+
 
     private var pendingPhoneCall: String? = null
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
@@ -67,10 +74,17 @@ class HomeFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        loadingProgressBar = view.findViewById(R.id.loadingProgressBar)
+        sosProgressBar = view.findViewById(R.id.sosProgressBar)
+        homeFragmentLoader = view.findViewById(R.id.homeFragmentLoader)
         homeProfileImage = view.findViewById(R.id.homeProfileImage)
         homeProfileText = view.findViewById(R.id.homeProfileText)
         currentLocation = view.findViewById(R.id.currentLocation)
+
+        // Show loader and initialize flags
+        homeFragmentLoader.visibility = View.VISIBLE
+        profileNameLoaded = false
+        profileImageLoaded = false
+        locationLoaded = false
 
         fetchProfileImage()
         fetchProfileText()
@@ -114,7 +128,7 @@ class HomeFragment : Fragment() {
 
     @SuppressLint("MissingPermission")
     private fun sendSOSAlert() {
-        loadingProgressBar.visibility = View.VISIBLE
+        sosProgressBar.visibility = View.VISIBLE
 
         val uid = firebaseAuth.currentUser?.uid ?: return
 
@@ -134,7 +148,7 @@ class HomeFragment : Fragment() {
                 """.trimIndent()
 
                 db.collection("users").document(uid)
-                    .collection("emergencyContacts").document(uid)
+                    .collection("emergencyContacts")
                     .get()
                     .addOnSuccessListener { documents ->
                         for (doc in documents) {
@@ -143,23 +157,27 @@ class HomeFragment : Fragment() {
 
                             ApiClient.instance.sendSos(sosRequest)
                                 .enqueue(object : Callback<SosResponse> {
-                                    override fun onResponse(call: Call<SosResponse>, response: Response<SosResponse>) {}
+                                    override fun onResponse(call: Call<SosResponse>, response: Response<SosResponse>) {
+                                        // Optional: handle response
+                                    }
+
                                     override fun onFailure(call: Call<SosResponse>, t: Throwable) {
                                         Toast.makeText(requireContext(), "Failed to send SOS to $phone", Toast.LENGTH_SHORT).show()
                                     }
                                 })
                         }
 
-                        loadingProgressBar.visibility = View.GONE
+                        sosProgressBar.visibility = View.GONE
                         Toast.makeText(requireContext(), "SOS Sent to All Guardians!", Toast.LENGTH_SHORT).show()
                     }
+
                     .addOnFailureListener {
-                        loadingProgressBar.visibility = View.GONE
+                        sosProgressBar.visibility = View.GONE
                         Toast.makeText(requireContext(), "Error fetching contacts", Toast.LENGTH_SHORT).show()
                     }
 
             } else {
-                loadingProgressBar.visibility = View.GONE
+                sosProgressBar.visibility = View.GONE
                 Toast.makeText(requireContext(), "Unable to get location", Toast.LENGTH_SHORT).show()
             }
         }
@@ -167,6 +185,7 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        activity?.findViewById<View>(R.id.bottomNavigation)?.visibility = View.VISIBLE
         fetchProfileImage()
     }
 
@@ -198,9 +217,13 @@ class HomeFragment : Fragment() {
         db.collection("users").document(uid).get()
             .addOnSuccessListener { document ->
                 homeProfileText.text = document.getString("name") ?: "User"
+                profileNameLoaded = true
+                checkIfDataLoaded()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                profileNameLoaded = true
+                checkIfDataLoaded()
             }
     }
 
@@ -214,9 +237,13 @@ class HomeFragment : Fragment() {
                     val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
                     Glide.with(this).load(bitmap).circleCrop().into(homeProfileImage)
                 }
+                profileImageLoaded = true
+                checkIfDataLoaded()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                profileImageLoaded = true
+                checkIfDataLoaded()
             }
     }
 
@@ -232,6 +259,8 @@ class HomeFragment : Fragment() {
                 getAddressFromLocation(location.latitude, location.longitude)
             } else {
                 currentLocation.text = "Unable to fetch location"
+                locationLoaded = true
+                checkIfDataLoaded()
             }
         }
     }
@@ -244,9 +273,20 @@ class HomeFragment : Fragment() {
             currentLocation.text = cityName
             requireContext().getSharedPreferences("LocationPrefs", Context.MODE_PRIVATE)
                 .edit().putString("current_location", cityName).apply()
+            locationLoaded = true
+            checkIfDataLoaded()
         } catch (e: IOException) {
             currentLocation.text = "Error fetching address"
+            locationLoaded = true
+            checkIfDataLoaded()
         }
+    }
+
+    private fun checkIfDataLoaded() {
+        if (profileNameLoaded && profileImageLoaded && locationLoaded) {
+            homeFragmentLoader.visibility = View.GONE
+        }
+
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -269,6 +309,8 @@ class HomeFragment : Fragment() {
                     getUserLocation()
                 } else {
                     currentLocation.text = "Permission Denied!"
+                    locationLoaded = true
+                    checkIfDataLoaded()
                 }
             }
         }

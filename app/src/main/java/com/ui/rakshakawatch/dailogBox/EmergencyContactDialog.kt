@@ -1,75 +1,52 @@
 package com.ui.rakshakawatch.dailogBox
 
-import android.app.Dialog
-import android.os.Bundle
+import android.app.AlertDialog
+import android.content.Context
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
-import androidx.fragment.app.DialogFragment
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.ui.rakshakawatch.R
 
-class EmergencyContactDialog(private val onContactAdded: (String, String, String) -> Unit) : DialogFragment() {
+class EmergencyContactDialog(
+    context: Context,
+    private val contactId: String? = null,
+    private val existingName: String? = null,
+    private val existingPhone: String? = null,
+    private val onSave: (String, String) -> Unit,
+    private val onDelete: (() -> Unit)? = null
+) {
 
-    private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
-    private lateinit var emgName: EditText
-    private lateinit var emgPhone: EditText
-    private lateinit var btnEmgSave: Button
-    private lateinit var btnEmgCancel: Button
+    private val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_add_contact, null)
+    private val nameEditText: EditText = dialogView.findViewById(R.id.emgName)
+    private val phoneEditText: EditText = dialogView.findViewById(R.id.emgPhone)
+    private val btnSave: Button = dialogView.findViewById(R.id.btnSave)
+    private val btnCancel: Button = dialogView.findViewById(R.id.btnCancel)
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_add_contact, null)
+    init {
+        // Set existing values if provided (for editing)
+        existingName?.let { nameEditText.setText(it) }
+        existingPhone?.let { phoneEditText.setText(it) }
 
-        // Initialize Firebase
-        firebaseAuth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
+        val builder = AlertDialog.Builder(context)
+            .setView(dialogView)
+            .setCancelable(true)
 
-        emgName = view.findViewById(R.id.emgName)
-        emgPhone = view.findViewById(R.id.emgPhone)
-        btnEmgSave = view.findViewById(R.id.btnEmgSave)
-        btnEmgCancel = view.findViewById(R.id.btnEmgCancel)
+        val dialog = builder.create()
 
-        val dialog = Dialog(requireContext())
-        dialog.setContentView(view)
-
-        btnEmgSave.setOnClickListener {
-            val name = emgName.text.toString().trim()
-            val phone = emgPhone.text.toString().trim()
-
-            if (name.isNotEmpty() && phone.isNotEmpty()) {
-                saveEmergencyContact(name, phone)
-            } else {
-                Toast.makeText(requireContext(), "Please enter both name and phone number", Toast.LENGTH_SHORT).show()
-            }
+        btnSave.setOnClickListener {
+            val name = nameEditText.text.toString()
+            val phone = phoneEditText.text.toString()
+            onSave(name, phone)
+            dialog.dismiss()
         }
 
-        btnEmgCancel.setOnClickListener {
-            dismiss()
+        btnCancel.setOnClickListener {
+            if (contactId != null && onDelete != null) {
+                onDelete?.let { it1 -> it1() }
+            }
+            dialog.dismiss()
         }
 
-        return dialog
-    }
-
-    private fun saveEmergencyContact(name: String, phone: String) {
-        val uid = firebaseAuth.currentUser?.uid ?: return
-        val contactData = hashMapOf(
-            "name" to name,
-            "phone" to phone
-        )
-
-        db.collection("users").document(uid)
-            .collection("emergencyContacts") // Save in sub-collection
-            .add(contactData)
-            .addOnSuccessListener {
-                Toast.makeText(requireContext(), "Contact Saved!", Toast.LENGTH_SHORT).show()
-                onContactAdded("", name, phone) // Update UI
-                dismiss()
-            }
-            .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
+        dialog.show()
     }
 }

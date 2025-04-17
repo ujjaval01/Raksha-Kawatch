@@ -42,10 +42,7 @@ class BlankActivity : AppCompatActivity() {
             val intent = Intent(this, DatePickerActivity::class.java)
             startActivity(intent)
         }
-        webView.setOnClickListener {
-            val intent = Intent(this, webViewActivity::class.java)
-            startActivity(intent)
-        }
+
         mainActivity.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
