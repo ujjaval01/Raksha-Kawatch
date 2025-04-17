@@ -25,7 +25,7 @@ class AiChatbotFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_chatbot, container, false)
+        val view = inflater.inflate(R.layout.fragment_ai_chatbot, container, false)
 
 
         return view

@@ -43,15 +43,13 @@
             <!-- Place the button just BELOW ScrollView -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnAddContact"
-                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_neumorphic4"
+                app:backgroundTint="@color/blue"
                 android:text="Add +"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                app:backgroundTint="@null" />
+                android:textSize="18sp" />
 
     </LinearLayout>
 
