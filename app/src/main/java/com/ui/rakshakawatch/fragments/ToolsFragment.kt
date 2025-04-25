@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.ui.rakshakawatch.R
 import com.ui.rakshakawatch.dailogBox.EmergencyContactDialog
+import com.ui.rakshakawatch.fragments.HomeFragment
 
 class FragmentTools : Fragment() {
 
@@ -40,22 +42,36 @@ class FragmentTools : Fragment() {
 
         loadEmergencyContacts()
 
+        // Handle system back press inside this fragment
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, HomeFragment())
+                    .commit()
+            }
+        })
+
         return view
     }
 
+    private fun formatPhoneNumber(number: String): String {
+        return if (number.startsWith("+")) number else "+91$number"
+    }
+
     private fun saveEmergencyContact(name: String, phone: String) {
+        val formattedPhone = formatPhoneNumber(phone)  // Format phone number
         val userId = firebaseAuth.currentUser?.uid ?: return
         val contactRef = db.collection("users").document(userId)
             .collection("emergencyContacts").document()
 
         val contactData = hashMapOf(
             "name" to name,
-            "phone" to phone
+            "phone" to formattedPhone
         )
 
         contactRef.set(contactData)
             .addOnSuccessListener {
-                addEmergencyContactButton(contactRef.id, name, phone)
+                addEmergencyContactButton(contactRef.id, name, formattedPhone)
             }
             .addOnFailureListener { e ->
                 Log.e("FirestoreError", "Failed to save contact", e)
@@ -71,10 +87,13 @@ class FragmentTools : Fragment() {
             .addOnSuccessListener { documents ->
                 emergencyContactContainer.removeAllViews()  // 🔄 Moved inside success listener
 
+                val phoneNumbers = mutableListOf<String>()
                 for (document in documents) {
                     val name = document.getString("name") ?: continue
                     val phone = document.getString("phone") ?: continue
                     val contactId = document.id
+
+                    phoneNumbers.add(formatPhoneNumber(phone))
 
                     addEmergencyContactButton(contactId, name, phone)
                 }

@@ -15,6 +15,7 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.EmailAuthProvider
@@ -23,6 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.ui.rakshakawatch.LoginActivity
 import com.ui.rakshakawatch.R
 import com.ui.rakshakawatch.fragments.AboutFragment
+import com.ui.rakshakawatch.fragments.HomeFragment
 import com.ui.rakshakawatch.fragments.ProfileFragment
 import com.ui.rakshakawatch.fragments.subFragments.DataStorageFragment
 
@@ -113,6 +115,15 @@ class SettingFragment : Fragment() {
             // Show confirmation dialog before deleting
             showDeleteConfirmationDialog()
         }
+
+        // Handle system back press inside this fragment
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, HomeFragment())
+                    .commit()
+            }
+        })
 
         return view
     }

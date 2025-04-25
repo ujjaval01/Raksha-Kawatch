@@ -12,6 +12,7 @@ import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.util.Base64
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -130,58 +131,76 @@ class HomeFragment : Fragment() {
     private fun sendSOSAlert() {
         sosProgressBar.visibility = View.VISIBLE
 
-        val uid = firebaseAuth.currentUser?.uid ?: return
+        val uid = firebaseAuth.currentUser?.uid
+        if (uid.isNullOrEmpty()) {
+            Toast.makeText(requireContext(), "User not authenticated", Toast.LENGTH_SHORT).show()
+            sosProgressBar.visibility = View.GONE
+            return
+        }
 
-        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+        fusedLocationClient.lastLocation.addOnSuccessListener { location ->
             if (location != null) {
                 val latitude = location.latitude
                 val longitude = location.longitude
                 val mapsUrl = "https://www.google.com/maps?q=$latitude,$longitude"
 
                 val message = """
-                    🚨 SOS Alert! 🚨
-                    
-                    I am in danger and need immediate help.
-                    My Live Location: $mapsUrl
-                    
-                    Please help me immediately!
-                """.trimIndent()
+                🚨 *SOS Alert!* 🚨
 
-                db.collection("users").document(uid)
-                    .collection("emergencyContacts")
-                    .get()
+                I am in danger and need immediate help.
+                📍 My Live Location: $mapsUrl
+
+                Please come quickly!
+            """.trimIndent()
+
+                db.collection("users").document(uid).collection("emergencyContacts").get()
                     .addOnSuccessListener { documents ->
-                        for (doc in documents) {
-                            val phone = doc.getString("phone") ?: continue
-                            val sosRequest = SosRequest(to = phone, message = message)
-
-                            ApiClient.instance.sendSos(sosRequest)
-                                .enqueue(object : Callback<SosResponse> {
-                                    override fun onResponse(call: Call<SosResponse>, response: Response<SosResponse>) {
-                                        // Optional: handle response
-                                    }
-
-                                    override fun onFailure(call: Call<SosResponse>, t: Throwable) {
-                                        Toast.makeText(requireContext(), "Failed to send SOS to $phone", Toast.LENGTH_SHORT).show()
-                                    }
-                                })
+                        if (documents.isEmpty) {
+                            Toast.makeText(requireContext(), "No emergency contacts found", Toast.LENGTH_SHORT).show()
+                            sosProgressBar.visibility = View.GONE
+                            return@addOnSuccessListener
                         }
 
-                        sosProgressBar.visibility = View.GONE
-                        Toast.makeText(requireContext(), "SOS Sent to All Guardians!", Toast.LENGTH_SHORT).show()
-                    }
+                        val contactNumbers = documents.mapNotNull { it.getString("phone") }
 
+                        val sosRequest = SosRequest(
+                            to = contactNumbers,
+                            message = message,
+                            location = "$latitude, $longitude"
+                        )
+
+                        ApiClient.apiService.sendSos(sosRequest).enqueue(object : Callback<SosResponse> {
+                            override fun onResponse(call: Call<SosResponse>, response: Response<SosResponse>) {
+                                if (response.isSuccessful && response.body()?.success == true) {
+                                    Toast.makeText(context, "SOS sent successfully", Toast.LENGTH_SHORT).show()
+                                } else {
+                                    Log.e("SOS_ERROR", "Response code: ${response.code()}, body: ${response.errorBody()?.string()}")
+                                    Toast.makeText(context, "Failed to send SOS", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            override fun onFailure(call: Call<SosResponse>, t: Throwable) {
+                                Log.e("SOS_ERROR", "Network error: ${t.localizedMessage}")
+                                Toast.makeText(context, "Error: ${t.localizedMessage}", Toast.LENGTH_LONG).show()
+                            }
+                        })
+
+                    }
                     .addOnFailureListener {
                         sosProgressBar.visibility = View.GONE
-                        Toast.makeText(requireContext(), "Error fetching contacts", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Error fetching emergency contacts", Toast.LENGTH_SHORT).show()
                     }
-
             } else {
                 sosProgressBar.visibility = View.GONE
-                Toast.makeText(requireContext(), "Unable to get location", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Unable to get current location", Toast.LENGTH_SHORT).show()
             }
+        }.addOnFailureListener {
+            sosProgressBar.visibility = View.GONE
+            Toast.makeText(requireContext(), "Error getting location", Toast.LENGTH_SHORT).show()
         }
     }
+
+
 
     override fun onResume() {
         super.onResume()

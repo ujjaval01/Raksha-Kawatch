@@ -25,8 +25,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.ui.rakshakawatch.databinding.ActivityMainBinding
-import com.ui.rakshakawatch.fragments.ChatHelpFragment
 import com.ui.rakshakawatch.fragments.HomeFragment
+import com.ui.rakshakawatch.fragments.helpFragments.ChatHelpFragment
 import com.zagori.bottomnavbar.BottomNavBar
 
 
